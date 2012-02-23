@@ -1,4 +1,6 @@
 Wallet::Application.routes.draw do
+  resources :packages
+
   resources :documents
 
   resources :users
