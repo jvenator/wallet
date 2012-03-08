@@ -44,7 +44,7 @@ class DocumentsController < ApplicationController
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.html { redirect_to documents_path, notice: 'Document was successfully created.' }
         format.json { render json: @document, status: :created, location: @document }
       else
         format.html { render action: "new" }

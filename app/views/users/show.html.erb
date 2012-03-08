@@ -1,20 +1,67 @@
-<p id="notice"><%= notice %></p>
+<h1>User</h1>
 
 <p>
-  <b>First name:</b>
+  <b>First name</b><br>
   <%= @user.first_name %>
 </p>
 
 <p>
-  <b>Last name:</b>
+  <b>Last name</b><br>
   <%= @user.last_name %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b>Email</b><br>
   <%= @user.email %>
 </p>
 
+<p>
+  <b>Encrypted password</b><br>
+  <%= @user.encrypted_password %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <b>Reset password token</b><br>
+  <%= @user.reset_password_token %>
+</p>
+
+<p>
+  <b>Reset password sent at</b><br>
+  <%= @user.reset_password_sent_at %>
+</p>
+
+<p>
+  <b>Remember created at</b><br>
+  <%= @user.remember_created_at %>
+</p>
+
+<p>
+  <b>Sign in count</b><br>
+  <%= @user.sign_in_count %>
+</p>
+
+<p>
+  <b>Current sign in at</b><br>
+  <%= @user.current_sign_in_at %>
+</p>
+
+<p>
+  <b>Last sign in at</b><br>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <b>Current sign in ip</b><br>
+  <%= @user.current_sign_in_ip %>
+</p>
+
+<p>
+  <b>Last sign in ip</b><br>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', users_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
+  <%= link_to 'Delete', user_path(@user), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

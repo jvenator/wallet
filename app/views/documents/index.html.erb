@@ -1,23 +1,24 @@
-<h1>Listing documents</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @documents.each do |document| %>
-  <tr>
-    <td><%= document.name %></td>
-    <td><%= link_to 'Show', document %></td>
-    <td><%= link_to 'Edit', edit_document_path(document) %></td>
-    <td><%= link_to 'Destroy', document, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Documents</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= link_to document.name, document_path(document) %></td>
+        <td><%= document.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Document', new_document_path %>
+<%= link_to 'New', new_document_path, :class => 'btn btn-primary' %>

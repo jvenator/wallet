@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h1>Package</h1>
 
 <p>
-  <b>Name:</b>
+  <b>Name</b><br>
   <%= @package.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_package_path(@package) %> |
-<%= link_to 'Back', packages_path %>
+<div class="form-actions">
+  <%= link_to 'Back', packages_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
+  <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
