@@ -1,11 +1,17 @@
 class Packages::DocumentsController < ApplicationController
   def create
     @package = Package.find(params[:package_id])
-    @documents = Document.find(params[:document_ids])
-    @documents.each do |d|
-      @package.document_packages.create(:document => d)
+    Document.where(["id IN (?)", params[:id]]).each do |d|
+      @package.add_document(d)
     end
+    @documents = Document.where(["id NOT IN (?)", @package.document_ids])
+    render("refresh_document_selector", :status => :created)
+  end
+  def destroy
+    @package = Package.find(params[:package_id])
+    @package.remove_document(Document.find(params[:id]))
     
-    render :nothing
+    @documents = Document.where(["id NOT IN (?)", @package.document_ids])
+    render("refresh_document_selector", :status => :ok)
   end
 end

@@ -1,0 +1,11 @@
+<ul>
+  <% @package.documents.each do |d| %>
+  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'delete', :remote => true %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @documents.each do |d| %>
+  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'post', :remote => true %></li>
+  <% end %>
+</ul>
