@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302201826) do
+ActiveRecord::Schema.define(:version => 20120308230940) do
 
   create_table "document_packages", :force => true do |t|
-    t.integer  "documents_id"
-    t.integer  "packages_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "document_id"
+    t.integer  "package_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "documents", :force => true do |t|

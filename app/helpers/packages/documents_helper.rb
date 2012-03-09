@@ -1,0 +1,2 @@
+module Packages::DocumentsHelper
+end

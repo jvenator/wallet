@@ -14,6 +14,7 @@ class PackagesController < ApplicationController
   # GET /packages/1.json
   def show
     @package = Package.find(params[:id])
+    @documents = Document.all-@package.documents
 
     respond_to do |format|
       format.html # show.html.erb

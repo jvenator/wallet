@@ -1,7 +1,9 @@
 Wallet::Application.routes.draw do
   devise_for :users
 
-  resources :packages
+  resources :packages do
+    resource :documents, :controller => 'packages/documents'
+  end
 
   resources :documents
 

@@ -4,7 +4,19 @@
   <b>Name</b><br>
   <%= @package.name %>
 </p>
+<ul>
+  <% @package.documents.each do |d| %>
+  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'delete', :remote => true %></li>
+  <% end %>
+</ul>
 
+<input type="text" name="document_ids">
+
+<ul>
+  <% @documents.each do |d| %>
+  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'post', :remote => true %></li>
+  <% end %>
+</ul>
 <div class="form-actions">
   <%= link_to 'Back', packages_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
