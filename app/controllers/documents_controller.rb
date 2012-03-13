@@ -80,4 +80,12 @@ class DocumentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def download
+    if resource.file.present?
+      redirect_to resource.file_url
+    else
+      redirect_to resource, :alert => "Sorry, document unavailable for download."
+    end
+  end
 end

@@ -3,7 +3,7 @@
 <p>
   <b>Name</b><br>
   <%= @document.name %></br>
-  File path: <%= link_to @document_file_path %>
+  <%= link_to 'download document', @document.file.url, :target => "_blank" %>
 </p>
 
 <div class="form-actions">
