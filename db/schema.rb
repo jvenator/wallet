@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308230940) do
+ActiveRecord::Schema.define(:version => 20120313033020) do
 
   create_table "document_packages", :force => true do |t|
     t.integer  "document_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120308230940) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "file"
   end
 
   create_table "packages", :force => true do |t|

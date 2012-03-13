@@ -2,6 +2,7 @@ class Packages::DocumentsController < ApplicationController
   def create
     @package = Package.find(params[:package_id])
     Document.where(["id IN (?)", params[:id]]).each do |d|
+    #Looks for document records with the params ID
       @package.add_document(d)
     end
     @documents = Document.where(["id NOT IN (?)", @package.document_ids])
