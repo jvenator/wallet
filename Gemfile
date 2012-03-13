@@ -11,6 +11,7 @@ gem 'devise'
 gem 'cancan'
 
 gem 'carrierwave'
+gem 'fog'
 
 gem 'simple_form'
 
