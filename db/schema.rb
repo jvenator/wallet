@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313033020) do
+ActiveRecord::Schema.define(:version => 20120315013625) do
 
   create_table "document_packages", :force => true do |t|
     t.integer  "document_id"
@@ -20,12 +20,8 @@ ActiveRecord::Schema.define(:version => 20120313033020) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "documents", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "file"
-  end
+# Could not dump table "documents" because of following StandardError
+#   Unknown type 'reference' for column 'user_id'
 
   create_table "packages", :force => true do |t|
     t.string   "name"

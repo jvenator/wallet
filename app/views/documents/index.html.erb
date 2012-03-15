@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>Created at</th>
       <th>Actions</th>
+      <th>User Email</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
           <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
         </td>
+        <td><%= document.user ? document.user.email : "no user" %></td>
       </tr>
     <% end %>
   </tbody>
