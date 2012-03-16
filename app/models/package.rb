@@ -1,4 +1,6 @@
 class Package < ActiveRecord::Base
+
+  belongs_to :user
   has_many :document_packages, :dependent => :destroy
   has_many :documents, :through => :document_packages
   

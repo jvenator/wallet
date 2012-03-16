@@ -4,6 +4,7 @@
     <tr>
       <th>Name</th>
       <th>Actions</th>
+      <th>Created By</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
           <%= link_to 'Edit', edit_package_path(package), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', package_path(package), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
         </td>
+        <td><%= package.user ? package.user.email : "no user" %></td>
       </tr>
     <% end %>
   </tbody>

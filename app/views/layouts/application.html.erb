@@ -34,11 +34,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">RentersWallet</a>
+          <%= link_to "RentersWallet", root_path, :class =>"brand" %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-                <li><%= link_to "Packages", packages_path  %></li>
-                <li><%= link_to "Documents", documents_path  %></li>
                 <li>
                   <% if user_signed_in? %>
                     Signed in as <%= current_user.email %>. 

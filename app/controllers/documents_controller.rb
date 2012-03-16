@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authorize_renter!
   # GET /documents
   # GET /documents.json
   def index

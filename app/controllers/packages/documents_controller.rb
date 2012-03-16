@@ -1,4 +1,5 @@
 class Packages::DocumentsController < ApplicationController
+#  before_filter authenticate_user!
   def create
     @package = Package.find(params[:package_id])
     Document.where(["id IN (?)", params[:id]]).each do |d|
