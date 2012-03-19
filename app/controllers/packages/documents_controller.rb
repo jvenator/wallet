@@ -6,14 +6,19 @@ class Packages::DocumentsController < ApplicationController
     #Looks for document records with the params ID
       @package.add_document(d)
     end
-    @documents = Document.where(["id NOT IN (?)", @package.document_ids])
+    @documents = current_user.documents.where(["id NOT IN (?)", @package.document_ids])
     render("refresh_document_selector", :status => :created)
   end
   def destroy
     @package = Package.find(params[:package_id])
     @package.remove_document(Document.find(params[:id]))
     
-    @documents = Document.where(["id NOT IN (?)", @package.document_ids])
-    render("refresh_document_selector", :status => :ok)
+    if !@package.document_ids.empty?
+      @documents = current_user.documents.where(["id NOT IN (?)",
+                    @package.document_ids])
+      else
+      @documents = current_user.documents
+    end
+    render("refresh_document_selector", :status => :ok)  
   end
 end

@@ -1,0 +1,25 @@
+<%= link_to "New User", new_admin_user_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Renter</th>
+      <th>Broker</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.last_name, [:admin, user] %></td>
+      <td><%= link_to user.first_name, [:admin, user] %></td>
+      <td><%= link_to user.email, [:admin, user] %></td>
+      <td><%= user.renter? ? "X" : "" %></td>
+      <td><%= user.broker? ? "X" : "" %></td>
+      <td><%= user.admin? ? "X" : "" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

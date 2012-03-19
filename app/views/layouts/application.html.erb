@@ -38,6 +38,11 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
                 <li>
+                  <%= admins_only do %>
+                    <%= link_to "Admin", admin_root_path %>
+                  <% end %>
+                </li>
+                <li>
                   <% if user_signed_in? %>
                     Signed in as <%= current_user.email %>. 
                     Not you?<%= link_to "Sign out", destroy_user_session_path,
