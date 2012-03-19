@@ -9,11 +9,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :production do
-  gem 'pg'
-  gem 'thin'
-end
-
 gem 'heroku'
 
 gem 'devise'
