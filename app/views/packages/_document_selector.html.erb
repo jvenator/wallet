@@ -1,15 +1,33 @@
-<ul>
-  <% @package.documents.each do |d| %>
-  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'delete', :remote => true %></li>
-  <% end %>
-</ul>
-<p>
-  documents above this line have been added/associated with this package</span></br>
- ******************************************************************************</br>
-  below the line represents documents that are available, but not yet added
-</p>
-<ul>
-  <% @documents.each do |d| %>
-  <li><%= link_to d.name, package_documents_path(@package, :id => d), :method => 'post', :remote => true %></li>
-  <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Available Documents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |d| %>
+    <tr>
+      <td><%= link_to "+", package_documents_path(@package, :id => d),
+              :method => 'post', :remote => true, :class => "btn btn-success" %>
+          <%= d.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Documents In This Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @package.documents.each do |d| %>
+    <tr>
+      <td><%= link_to "-", package_documents_path(@package, :id => d),
+              :method => 'delete', :remote => true, :class => "btn btn-danger" %>
+          <%= d.name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

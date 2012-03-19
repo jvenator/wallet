@@ -1,14 +1,12 @@
-<h1>Package</h1>
-
 <p>
-  <b>Name</b><br>
-  <%= @package.name %>
+  <h3><%= @package.name %></h3>
+  <small>  (package name)</small>
+  <div class="form-actions">
+    <%= link_to 'Back', packages_path, :class => 'btn'  %>
+    <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
+    <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  </div>
 </p>
 <div id="document_selector">
   <%= render "document_selector" %>
-</div>
-<div class="form-actions">
-  <%= link_to 'Back', packages_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
-  <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
