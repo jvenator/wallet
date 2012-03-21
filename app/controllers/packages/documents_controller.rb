@@ -6,7 +6,7 @@ class Packages::DocumentsController < ApplicationController
     #Looks for document records with the params ID
       @package.add_document(d)
     end
-    @documents = current_user.documents.where(["id NOT IN (?)", @package.document_ids])
+    @documents = current_user.documents.where(["id NOT IN (?)", @package.document_ids]).order("name asc")
     render("refresh_document_selector", :status => :created)
   end
   def destroy
@@ -15,10 +15,12 @@ class Packages::DocumentsController < ApplicationController
     
     if !@package.document_ids.empty?
       @documents = current_user.documents.where(["id NOT IN (?)",
-                    @package.document_ids])
+                    @package.document_ids]).order("name asc")
       else
-      @documents = current_user.documents
+      @documents = current_user.documents.order("name asc")
     end
     render("refresh_document_selector", :status => :ok)  
   end
+  
+  
 end
