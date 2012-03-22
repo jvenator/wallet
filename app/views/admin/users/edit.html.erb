@@ -1,1 +1,4 @@
-<%= render :partial => 'form' %>
+<%= simple_form_for([:admin, @user]) do |f| %>
+  <%= f.error_notification %>
+<%= render 'devise/registrations/form_edit', :f => f %>
+<% end %>

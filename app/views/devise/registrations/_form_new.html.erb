@@ -1,0 +1,13 @@
+<div class="inputs">
+  <%= f.input :email, :required => true, :autofocus => true %>
+  <%= f.input :first_name, :required => true %>
+  <%= f.input :last_name, :required => true %>
+  <%= f.input :renter, :label => "Are you a renter?" %>
+  <%= f.input :broker, :label => "Are you a broker?" %>
+  <%= f.input :password, :required => true %>
+  <%= f.input :password_confirmation, :required => true %>
+</div>
+
+<div class="actions">
+  <%= f.button :submit, "Sign up" %>
+</div>

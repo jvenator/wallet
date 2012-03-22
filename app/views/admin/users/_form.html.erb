@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @user], :html => { :method => :put }) do |f| %>
+<%= simple_form_for([:admin, @user]) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
@@ -12,6 +12,6 @@
   </div>
 
   <div class="actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit %>
   </div>
 <% end %>

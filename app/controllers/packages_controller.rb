@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   before_filter :authorize_renter!
+
   # GET /packages
   # GET /packages.json
   def index

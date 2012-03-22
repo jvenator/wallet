@@ -1,21 +1,6 @@
 <h2>Sign up</h2>
-
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :first_name, :required => true %>
-    <%= f.input :last_name, :required => true %>
-    <%= f.input :renter, :label => "Are you a renter?" %>
-    <%= f.input :broker, :label => "Are you a broker?" %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+<%= render 'form_new', :f => f %>
 <% end %>
-
 <%= render "links" %>
