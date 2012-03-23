@@ -5,6 +5,7 @@ class PackagesController < ApplicationController
   # GET /packages.json
   def index
     @packages = current_user.packages
+    @shared_packages = current_user.shared_packages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -82,5 +83,17 @@ class PackagesController < ApplicationController
       format.html { redirect_to packages_url }
       format.json { head :no_content }
     end
+  end
+  
+  def share
+    id = params[:id]
+    target = User.find_by_email(params[:email])
+    if target.present?
+      target.share_package(id)
+      flash[:notice] = "Package shared successfully"
+    else
+      flash[:error] = "User not found!"
+    end
+    redirect_to package_path(id)
   end
 end

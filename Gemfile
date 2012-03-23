@@ -10,6 +10,7 @@ group :development, :test do
   gem 'thin'
 end
 
+gem 'mysql'
 gem 'heroku'
 
 gem 'devise'

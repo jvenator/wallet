@@ -1,7 +1,7 @@
 <p>
   <h3>
     <%= @package.name %> 
-    <% if @package.identifier? %>
+    <% if @package.identifier.present? %>
        - (ID <%= @package.identifier %>)
     <% end%>
   </h3>
@@ -10,6 +10,12 @@
     <%= link_to 'Back', packages_path, :class => 'btn'  %>
     <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
     <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+    <div style="float:right;text-align:left">
+      <%= form_tag share_package_path(@package) do %>
+        <%= text_field_tag :email, ''%>
+        <%= submit_tag "Share"%>
+      <% end%>
+    </div>
   </div>
 </p>
 <div id="document_selector">

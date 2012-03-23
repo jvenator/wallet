@@ -49,6 +49,19 @@ module Wallet
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
+    
+    config.action_mailer.delivery_method = :smtp
+		config.action_mailer.raise_delivery_errors = true
+		config.action_mailer.smtp_settings = {
+			:address              => "smtp.gmail.com",
+		  :port                 => 587,
+		  :domain               => 'venator.vc',
+		  :user_name            => 'renterswallet@venator.vc',
+		  :password             => 'venator123',
+		  :authentication       => 'plain',
+			:enable_starttls_auto => true,
+			:tls => true
+			}
 
     # Enable the asset pipeline
     config.assets.enabled = true

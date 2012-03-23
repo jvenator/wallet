@@ -20,11 +20,21 @@ ActiveRecord::Schema.define(:version => 20120322193217) do
     t.datetime "updated_at",  :null => false
   end
 
-# Could not dump table "documents" because of following StandardError
-#   Unknown type 'reference' for column 'user_id'
+  create_table "documents", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "file"
+    t.integer  "user_id"
+  end
 
-# Could not dump table "packages" because of following StandardError
-#   Unknown type 'reference' for column 'user_id'
+  create_table "packages", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.string   "identifier"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

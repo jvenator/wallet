@@ -4,9 +4,14 @@ Wallet::Application.routes.draw do
 
   resources :packages do
     resource :documents, :controller => 'packages/documents'
+    member do
+      post :share
+    end
   end
 
   resources :documents
+  
+  resources :shared_packages
   
   namespace :admin do
     root :to => "base#index"
