@@ -1,5 +1,10 @@
 <p>
-  <h3><%= @package.name %></h3>
+  <h3>
+    <%= @package.name %> 
+    <% if @package.identifier? %>
+       - (ID <%= @package.identifier %>)
+    <% end%>
+  </h3>
   <small>  (package name)</small>
   <div class="form-actions">
     <%= link_to 'Back', packages_path, :class => 'btn'  %>
