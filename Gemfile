@@ -7,13 +7,13 @@ gem 'rails', '3.2.1'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'thin'
 end
 
 group :deploy do
   gem 'pg'
 end
 
+gem 'thin'
 gem 'heroku'
 
 gem 'devise'
