@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323043357) do
+ActiveRecord::Schema.define(:version => 20120324193709) do
 
   create_table "document_packages", :force => true do |t|
     t.integer  "document_id"
@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(:version => 20120323043357) do
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "sender_id"
+    t.string   "receiver_email"
   end
 
   create_table "users", :force => true do |t|
@@ -62,6 +64,14 @@ ActiveRecord::Schema.define(:version => 20120323043357) do
     t.boolean  "renter",                 :default => false
     t.boolean  "admin",                  :default => false
     t.boolean  "broker"
+    t.string   "mobile_num"
+    t.string   "home_num"
+    t.string   "fax_num"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

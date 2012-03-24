@@ -86,14 +86,15 @@ class PackagesController < ApplicationController
   end
   
   def share
-    id = params[:id]
-    target = User.find_by_email(params[:email])
-    if target.present?
-      target.share_package(id)
+    package = Package.find(params[:id])
+    target = params[:email]
+    shared_package = package.share_package(current_user, target)
+    if shared_package.persisted?
       flash[:notice] = "Package shared successfully"
     else
-      flash[:error] = "User not found!"
+      flash[:notice] = shared_package.errors.full_messages.first
     end
-    redirect_to package_path(id)
+    
+    redirect_to package_path(package)
   end
 end

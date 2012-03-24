@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :renter, :broker, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :first_name, :last_name, :mobile_num, :home_num, :address_1, :address_2, :city, :state, :zip, :renter, :broker, :password, :password_confirmation, :remember_me
   has_many :documents, :dependent => :destroy
   has_many :packages
   has_many :shared_packages, :as => :receiver
@@ -14,9 +14,4 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
   
-  
-  def share_package(package_id)
-    shared_package = self.shared_packages.create(:package_id => package_id)
-    Notifications.shared_package(shared_package).deliver
-  end
 end

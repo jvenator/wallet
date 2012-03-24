@@ -1,0 +1,29 @@
+<h2>
+  <%= @shared_package.package.user.first_name %> <%= @shared_package.package.user.last_name %> - <%= @shared_package.package.identifier %>
+</h2>
+<div>
+  <h3>Profile:</h3>
+  <ul>
+    <li><%= mail_to @shared_package.package.user.email %></li>
+    <li><% unless @shared_package.package.user.mobile_num.blank? %><%= @shared_package.package.user.mobile_num %><% end %></li>
+    <li><% unless @shared_package.package.user.home_num.blank? %><%= @shared_package.package.user.home_num %><% end %></li>
+  </ul>
+    <p>
+      <% unless @shared_package.package.user.address_1.blank? %><%= @shared_package.package.user.address_1 %><% end %><br />
+      <% unless @shared_package.package.user.address_2.blank? %><%= @shared_package.package.user.address_2 "<br />" %><% end %>
+      <% unless @shared_package.package.user.city.blank? %><%= @shared_package.package.user.city %><% end %>, 
+      <% unless @shared_package.package.user.state.blank? %><%= @shared_package.package.user.state %><% end %>  
+      <% unless @shared_package.package.user.zip.blank? %><%= @shared_package.package.user.zip %><% end %>
+    </p>
+</div>
+<div>
+  <h3>Documents:</h3>
+  <ul>
+    <% @shared_package.package.documents.each do |document| %>
+      <li>
+        <%= document.name %> 
+        <%= link_to "download", document.file.url, :target => "_blank", :class => "btn" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

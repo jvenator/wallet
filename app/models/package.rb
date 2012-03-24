@@ -17,6 +17,15 @@ class Package < ActiveRecord::Base
     end
   end
   
+  def share_package(sender, receiver_email)
+    receiver = User.find_by_email(receiver_email)
+    shared_package = self.shared_packages.create(:receiver => receiver, :receiver_email => receiver_email, :sender => sender)
+    if shared_package.persisted?
+      Notifications.shared_package(shared_package).deliver
+    end
+    shared_package
+  end
+  
   private  
   def generate_package_identifier
     while Package.exists?(:identifier => self.identifier) do

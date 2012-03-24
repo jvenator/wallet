@@ -3,16 +3,17 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Created at</th>
       <th>Actions</th>
-      <th>User Email</th>
+      <th>Creator Email</th>
     </tr>
   </thead>
   <tbody>
     <% @documents.each do |document| %>
       <tr>
-        <td><%= link_to document.name, document_path(document) %></td>
-        <td><%= document.created_at %></td>
+        <td>
+          <%= link_to document.name, document_path(document) %> 
+          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+        </td>
         <td>
           <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>

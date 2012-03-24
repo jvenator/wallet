@@ -1,10 +1,5 @@
-<h1>Document</h1>
-
-<p>
-  <b>Name</b><br>
-  <%= @document.name %></br>
-  <%= link_to 'download document', @document.file.url, :target => "_blank" %>
-</p>
+<h2><%= @document.name %></h2>
+<%= link_to 'download document', @document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 
 <div class="form-actions">
   <%= link_to 'Back', documents_path, :class => 'btn'  %>

@@ -5,7 +5,6 @@
        - (ID <%= @package.identifier %>)
     <% end%>
   </h3>
-  <small>  (package name)</small>
   <div class="form-actions">
     <%= link_to 'Back', packages_path, :class => 'btn'  %>
     <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
@@ -18,6 +17,19 @@
     </div>
   </div>
 </p>
+<h4>You've shared this package with the following email addresses and/or listings...</h4>
+<table class="table">
+  <thead>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <% @package.shared_packages.each do |s| %>
+    <tr>
+      <td><%= s.receiver_email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <div id="document_selector">
   <%= render "document_selector" %>
 </div>
