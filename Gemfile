@@ -10,6 +10,10 @@ group :development, :test do
   gem 'thin'
 end
 
+group :deploy do
+  gem 'pg'
+end
+
 gem 'heroku'
 
 gem 'devise'
