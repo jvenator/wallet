@@ -1,5 +1,5 @@
 class PackagesController < ApplicationController
-  before_filter :authorize_renter!
+  before_filter :authenticate_user!
 
   # GET /packages
   # GET /packages.json
@@ -44,7 +44,7 @@ class PackagesController < ApplicationController
   # POST /packages
   # POST /packages.json
   def create
-    @package = Package.new(params[:package].merge!(:user_id => current_user))
+    @package = current_user.packages.build(params[:package])
 
     respond_to do |format|
       if @package.save

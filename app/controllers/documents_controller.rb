@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_filter :authorize_renter!
+  before_filter :authenticate_user!
   # GET /documents
   # GET /documents.json
   def index
@@ -41,7 +41,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(params[:document].merge!(:user_id => current_user))
+    @document = current_user.documents.build(params[:document])
 
     respond_to do |format|
       if @document.save

@@ -93,7 +93,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
-    mysql (2.8.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
@@ -176,7 +175,6 @@ DEPENDENCIES
   fog
   heroku
   jquery-rails
-  mysql
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   simple_form
