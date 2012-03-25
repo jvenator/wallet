@@ -28,31 +28,39 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-          <div class="container-fluid">
+          <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           <%= link_to "RentersWallet", root_path, :class =>"brand" %>
-          <div class="container-fluid">
-            <ul class="nav-collapse">
+          <div class="nav-collapse">
+            <ul class="nav">
+                <% admins_only do %>
                 <li>
-                  <%= admins_only do %>
-                    <%= link_to "Admin", admin_root_path %>
-                  <% end %>
+                  <%= link_to "Admin", admin_root_path %>
+                </li>
+                <% end %>
+                <% if user_signed_in? %>
+                <li>
+                  Signed in as <%= current_user.email %>
                 </li>
                 <li>
-                  <% if user_signed_in? %>
-                    Signed in as <%= current_user.email %> 
-                    Not you?<%= link_to "Sign out", destroy_user_session_path,
+                   Not you?<%= link_to "Sign out", destroy_user_session_path,
                     :method => :delete %>
-                    <%= link_to "Edit profile", edit_user_registration_path %>
-                  <% else %>
-                    <%= link_to "Sign up", new_user_registration_path %> or 
-                    <%= link_to "sign in", new_user_session_path %>
-                  <% end %>
                 </li>
+                <li>
+                    <%= link_to "Edit profile", edit_user_registration_path %>
+                </li>
+                <% else %>
+                <li>
+                  <%= link_to "Sign up", new_user_registration_path %>
+                </li>
+                <li>
+                  or <%= link_to "sign in", new_user_session_path %>
+                </li>
+                <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

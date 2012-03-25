@@ -20,7 +20,7 @@ Wallet::Application.routes.draw do
     resources :users
   end
   
-  root :to => 'dashboards#show'
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
