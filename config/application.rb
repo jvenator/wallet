@@ -52,16 +52,6 @@ module Wallet
     
     config.action_mailer.delivery_method = :smtp
 		config.action_mailer.raise_delivery_errors = true
-		config.action_mailer.smtp_settings = {
-			:address              => "smtp.gmail.com",
-		  :port                 => 587,
-		  :domain               => 'venator.vc',
-		  :user_name            => 'renterswallet@venator.vc',
-		  :password             => 'venator123',
-		  :authentication       => 'plain',
-			:enable_starttls_auto => true,
-			:tls => true
-			}
 
     # Enable the asset pipeline
     config.assets.enabled = true
