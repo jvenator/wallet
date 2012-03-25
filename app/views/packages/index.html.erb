@@ -1,43 +1,5 @@
-<h1>Packages</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actions</th>
-      <th>Created By</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @packages.each do |package| %>
-      <tr>
-        <td><%= link_to package.name, package_path(package) %></td>
-        <td>
-          <%= link_to 'Edit', edit_package_path(package), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', package_path(package), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-        </td>
-        <td><%= package.user ? package.user.email : "no user" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New', new_package_path, :class => 'btn btn-primary' %>
-
-
-<h1>Shared Packages</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Last Updated</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shared_packages.each do |shared_package| %>
-      <tr>
-        <td><%= link_to "#{shared_package.package.user} - #{shared_package.package.identifier}", shared_package_path(shared_package) %></td>
-        <td><%= shared_package.package.updated_at.time.to_formatted_s(:long) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% unless current_user.broker? %>
+  <%= render "my_packages" %>
+<% else %>
+  <%= render "shared_packages" %>
+<% end %>

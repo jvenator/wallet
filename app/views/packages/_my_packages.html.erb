@@ -1,0 +1,22 @@
+<h2>My Packages</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @packages.each do |package| %>
+      <tr>
+        <td><%= link_to package.name, package_path(package) %></td>
+        <td>
+          <%= link_to 'Edit', edit_package_path(package), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', package_path(package), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_package_path, :class => 'btn btn-primary' %>
