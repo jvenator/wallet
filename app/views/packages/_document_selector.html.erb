@@ -1,4 +1,4 @@
-<table class="table table-striped table-half">
+<table class="table table-striped table-thirds">
   <thead>
     <tr>
       <th>Available Documents</th>
@@ -8,13 +8,13 @@
     <% @documents.each do |d| %>
     <tr>
       <td><%= link_to "+", package_documents_path(@package, :id => d),
-              :method => 'post', :remote => true, :class => "btn btn-success" %>
+              :method => 'post', :remote => true, :class => "btn btn-mini btn-success" %>
           <%= d.name %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<table class="table table-striped table-half">
+<table class="table table-striped table-thirds">
   <thead>
     <tr>
       <th>Documents In This Package</th>
@@ -24,7 +24,7 @@
     <% @package.documents.each do |d| %>
     <tr>
       <td><%= link_to "-", package_documents_path(@package, :id => d),
-              :method => 'delete', :remote => true, :class => "btn btn-danger" %>
+              :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
           <%= d.name %>
       </td>
     </tr>

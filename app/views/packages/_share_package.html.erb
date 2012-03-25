@@ -1,0 +1,19 @@
+<div>
+  <%= form_tag share_package_path(@package) do %>
+    <%= text_field_tag :email, ''%>
+    <%= submit_tag "Share"%>
+  <% end%>
+</div>
+<h4>You've shared this package with the following email addresses and/or listings...</h4>
+<table class="table table-striped">
+  <thead>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <% @package.shared_packages.each do |s| %>
+    <tr>
+      <td><%= s.receiver_email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

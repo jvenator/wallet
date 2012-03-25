@@ -1,6 +1,8 @@
 Wallet::Application.routes.draw do
   
   devise_for :users
+  
+  resource :dashboard
 
   resources :packages do
     resource :documents, :controller => 'packages/documents'
@@ -18,7 +20,7 @@ Wallet::Application.routes.draw do
     resources :users
   end
   
-  root :to => 'packages#index'
+  root :to => 'dashboards#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

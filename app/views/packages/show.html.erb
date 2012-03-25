@@ -6,30 +6,14 @@
     <% end%>
   </h3>
   <div class="form-actions">
-    <%= link_to 'Back', packages_path, :class => 'btn'  %>
-    <%= link_to 'Edit', edit_package_path(@package), :class => 'btn' %>
-    <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-    <div style="float:right;text-align:left">
-      <%= form_tag share_package_path(@package) do %>
-        <%= text_field_tag :email, ''%>
-        <%= submit_tag "Share"%>
-      <% end%>
+    <%= link_to 'Dashboard', dashboard_path, :class => 'btn btn-mini btn-info'  %>
+    <%= link_to 'Edit', edit_package_path(@package), :class => 'btn btn-mini' %>
+    <%= link_to 'Delete', package_path(@package), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
     </div>
-  </div>
 </p>
-<h4>You've shared this package with the following email addresses and/or listings...</h4>
-<table class="table">
-  <thead>
-    <th>Email</th>
-  </thead>
-  <tbody>
-    <% @package.shared_packages.each do |s| %>
-    <tr>
-      <td><%= s.receiver_email %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
 <div id="document_selector">
   <%= render "document_selector" %>
+</div>
+<div class="table-thirds">
+  <%= render "share_package" %>
 </div>

@@ -9,8 +9,9 @@
   <%= f.input :city %>
   <%= f.input :state %>
   <%= f.input :zip, :label => "Zip code" %>
-  <%= f.input :renter, :label => "Are you a renter?" %>
-  <%= f.input :broker, :label => "Are you a broker?" %>
+  <strong>Only select one...</strong>
+  <%= f.input :renter, :label => "Renter?" %>
+  <%= f.input :broker, :label => "Manager?" %><br />
   <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
   <%= f.input :password_confirmation, :required => false %>
   <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>

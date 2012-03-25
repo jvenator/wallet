@@ -12,4 +12,4 @@ admin.save!
 
 renter = User.create!(first_name: "Ronnie", last_name: "Renter", email: "ronnie@renter.com", password: "password", password_confirmation: "password", renter: "true", mobile_num: "646-555-8181", address_1: "123 Renter Lane", address_2: "Apt 7", city: "New York", state: "NY", zip: "10003")
 
-broker = User.create!(first_name: "Broker", last_name: "Girl", email: "broker@broker.com", password: "password", password_confirmation: "password", broker: "true", mobile_num: "917-555-8181", address_1: "123 Owner Lane", address_2: "Suite 1134", city: "New York", state: "NY", zip: "10022")
+manager = User.create!(first_name: "Manager", last_name: "Girl", email: "manager@manager.com", password: "password", password_confirmation: "password", manager: "true", mobile_num: "917-555-8181", address_1: "123 Owner Lane", address_2: "Suite 1134", city: "New York", state: "NY", zip: "10022")
