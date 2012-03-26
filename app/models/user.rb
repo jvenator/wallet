@@ -10,8 +10,14 @@ class User < ActiveRecord::Base
   has_many :packages
   has_many :shared_packages, :as => :receiver
   
+  after_create :generate_receiver_id
+  
   def to_s
     "#{self.first_name} #{self.last_name}"
   end
+  
+  private
+  def generate_receiver_id
+    
   
 end
