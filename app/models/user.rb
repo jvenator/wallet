@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   
   private
   def generate_receiver_id
-    
-  
+    shared_packages << SharedPackage.where('receiver_email = ?', email.downcase)
+  end
 end
