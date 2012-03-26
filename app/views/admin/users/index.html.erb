@@ -7,7 +7,7 @@
       <th>Email</th>
       <th></th>
       <th>Renter</th>
-      <th>Broker</th>
+      <th>OwnerRep</th>
       <th>Admin</th>
     </tr>
   </thead>
@@ -20,7 +20,7 @@
       <td><%= link_to "Edit", edit_admin_user_path(@admin, :id => user.id),
               :method => 'get', :class => "btn" %></td>
       <td><%= user.renter? ? "X" : "" %></td>
-      <td><%= user.broker? ? "X" : "" %></td>
+      <td><%= user.owner_rep? ? "X" : "" %></td>
       <td><%= user.admin? ? "X" : "" %></td>
     </tr>
     <% end %>

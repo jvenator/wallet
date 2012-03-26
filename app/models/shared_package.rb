@@ -4,5 +4,4 @@ class SharedPackage < ActiveRecord::Base
   has_many :documents, :through => :package
   belongs_to :sender, :class_name => "User"
   validates :receiver_email, :uniqueness => { :scope => :package_id, :message => "Package already shared with that email address."}
-  #validates_uniqueness_of :receiver, :scope => :package
 end

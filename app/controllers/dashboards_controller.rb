@@ -8,8 +8,8 @@ class DashboardsController < ApplicationController
     
     if current_user.renter?
       render "dashboard_renter"
-    elsif current_user.manager?
-      render "dashboard_manager"
+    elsif current_user.owner_rep?
+      render "dashboard_owner_rep"
     else
       render "dashboard_admin"
     end
