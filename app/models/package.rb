@@ -3,7 +3,7 @@ class Package < ActiveRecord::Base
   belongs_to :user
   has_many :document_packages, :dependent => :destroy
   has_many :documents, :through => :document_packages
-  has_many :shared_packages
+  has_many :shared_packages, :dependent => :destroy
   
   before_save :generate_package_identifier
   
