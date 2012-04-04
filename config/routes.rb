@@ -1,5 +1,7 @@
 Wallet::Application.routes.draw do
   
+  resources :listings
+
   devise_for :users
   
   resource :dashboard

@@ -17,6 +17,7 @@
       }
     </style>
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le fav and touch icons -->
     <link href="images/favicon.ico" rel="shortcut icon">
@@ -66,10 +67,13 @@
         </div>
       </div>
     </div>
-    <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    <%- end -%>
     <div class="container-fluid">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">x</a>
+          <%= msg %>
+        </div>
+      <% end %>
       <div class="row-fluid">
         <div class="span10">
           <%= yield %>

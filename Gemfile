@@ -16,6 +16,9 @@ end
 gem 'thin'
 gem 'heroku'
 
+gem 'newrelic_rpm'
+gem 'airbrake'
+
 gem 'devise'
 gem 'cancan'
 

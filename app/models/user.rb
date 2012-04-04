@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :documents, :dependent => :destroy
   has_many :packages
   has_many :shared_packages, :as => :receiver
+  has_many :listings
   
   after_create :generate_receiver_id
   

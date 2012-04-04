@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326182023) do
+ActiveRecord::Schema.define(:version => 20120404192510) do
 
   create_table "document_packages", :force => true do |t|
     t.integer  "document_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20120326182023) do
     t.datetime "updated_at", :null => false
     t.string   "file"
     t.integer  "user_id"
+  end
+
+  create_table "listings", :force => true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "packages", :force => true do |t|
