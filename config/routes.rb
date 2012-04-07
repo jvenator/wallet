@@ -1,13 +1,18 @@
 Wallet::Application.routes.draw do
   
-  resources :listings
-
   devise_for :users
   
   resource :dashboard
 
   resources :packages do
     resource :documents, :controller => 'packages/documents'
+    member do
+      post :share
+    end
+  end
+  
+  resources :listings do
+    resource :documents, :controller => 'listings/documents'
     member do
       post :share
     end

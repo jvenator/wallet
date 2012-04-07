@@ -16,6 +16,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @documents = current_user.documents-@listing.documents
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,7 +79,7 @@ class ListingsController < ApplicationController
     @listing.destroy
 
     respond_to do |format|
-      format.html { redirect_to listings_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

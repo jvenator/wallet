@@ -1,0 +1,33 @@
+<table class="table table-striped table-thirds">
+  <thead>
+    <tr>
+      <th>Available Documents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |d| %>
+    <tr>
+      <td><%= link_to "+", listing_documents_path(@listing, :id => d),
+              :method => 'post', :remote => true, :class => "btn btn-mini btn-success" %>
+          <%= d.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<table class="table table-striped table-thirds">
+  <thead>
+    <tr>
+      <th>Documents In This Listing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listing.documents.each do |d| %>
+    <tr>
+      <td><%= link_to "-", listing_documents_path(@listing, :id => d),
+              :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
+          <%= d.name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

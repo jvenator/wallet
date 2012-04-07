@@ -28,8 +28,6 @@ class Package < ActiveRecord::Base
   
   private  
   def generate_package_identifier
-    while Package.exists?(:identifier => self.identifier) do
-      self.identifier = SecureRandom.urlsafe_base64[0..5].upcase  
-    end
+    self.identifier = SecureRandom.urlsafe_base64[0..5].upcase
   end
 end

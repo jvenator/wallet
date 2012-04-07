@@ -1,18 +1,18 @@
-<h2>Shared Packages</h2>
+<h2>Received Packages</h2>
 <% if @shared_packages.empty? %>
 <h4>No packages have been shared with you.</h4>
 <% else %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Last Updated</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @shared_packages.each do |shared_package| %>
       <tr>
-        <td><%= link_to "#{shared_package.package.name} - #{shared_package.package.identifier}", shared_package_path(shared_package) %></td>
+        <td><h4><%= link_to "#{shared_package.package.name} - #{shared_package.package.identifier}", shared_package_path(shared_package) %></h4></td>
         <td><%= shared_package.package.updated_at.time.to_formatted_s(:long) %></td>
       </tr>
     <% end %>
