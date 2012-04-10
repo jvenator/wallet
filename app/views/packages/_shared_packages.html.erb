@@ -12,7 +12,7 @@
   <tbody>
     <% @shared_packages.each do |shared_package| %>
       <tr>
-        <td><h4><%= link_to "#{shared_package.package.name} - #{shared_package.package.identifier}", shared_package_path(shared_package) %></h4></td>
+        <td><h4><%= link_to "#{shared_package.package.user.first_name} #{shared_package.package.user.last_name} - #{shared_package.package.identifier}", shared_package_path(shared_package) %></h4></td>
         <td><%= shared_package.package.updated_at.time.to_formatted_s(:long) %></td>
       </tr>
     <% end %>
