@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406213052) do
+ActiveRecord::Schema.define(:version => 20120410034528) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(:version => 20120406213052) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.string   "identifier"
+  end
+
+  create_table "shared_listings", :force => true do |t|
+    t.string   "receiver_type"
+    t.integer  "receiver_id"
+    t.integer  "listing_id"
+    t.integer  "sender_id"
+    t.string   "receiver_email"
+    t.string   "listing_identifier"
+    t.string   "package_identifier"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "shared_packages", :force => true do |t|

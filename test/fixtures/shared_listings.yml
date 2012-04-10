@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  receiver_type: MyString
+  receiver_id: 1
+  listing: 1
+  sender_id: 1
+  receiver_email: MyString
+  listing_identifier: MyString
+  package_identifier: MyString
+
+two:
+  receiver_type: MyString
+  receiver_id: 1
+  listing: 1
+  sender_id: 1
+  receiver_email: MyString
+  listing_identifier: MyString
+  package_identifier: MyString

@@ -1,0 +1,21 @@
+<h2>Received Listings</h2>
+<% if @shared_listings.empty? %>
+<h4>No listings have been shared with you.</h4>
+<% else %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shared_listings.each do |shared_listing| %>
+      <tr>
+        <td><h4><%= link_to "#{shared_listing.listing.user.first_name} #{shared_listing.listing.user.last_name} - #{shared_listing.listing.identifier}", shared_listing_path(shared_listing) %></h4></td>
+        <td><%= shared_listing.listing.updated_at.time.to_formatted_s(:long) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

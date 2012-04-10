@@ -1,0 +1,19 @@
+<div>
+  <%= form_tag share_listing_path(@listing) do %>
+    <%= text_field_tag :email, ''%>
+    <%= submit_tag "Share"%>
+  <% end%>
+</div>
+<h4>You've shared this listing with the following email addresses...</h4>
+<table class="table table-striped">
+  <thead>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <% @listing.shared_listings.each do |s| %>
+    <tr>
+      <td><%= s.receiver_email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = current_user.listings
+    @shared_listings = current_user.shared_listings
 
     respond_to do |format|
       format.html # index.html.erb
@@ -82,5 +83,19 @@ class ListingsController < ApplicationController
       format.html { redirect_to root_path }
       format.json { head :no_content }
     end
+  end
+  
+  def share
+    listing = Listing.find(params[:id])
+    target = params[:email].downcase
+    shared_listing = listing.share_listing(current_user, target)
+    
+    if shared_listing.persisted?
+      flash[:notice] = "Listing shared successfully"
+    else
+      flash[:notice] = shared_listing.errors.full_messages.first
+    end
+    
+    redirect_to listing_path(listing)
   end
 end

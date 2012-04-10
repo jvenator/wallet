@@ -10,6 +10,8 @@ Wallet::Application.routes.draw do
       post :share
     end
   end
+
+  resources :shared_packages
   
   resources :listings do
     resource :documents, :controller => 'listings/documents'
@@ -18,9 +20,9 @@ Wallet::Application.routes.draw do
     end
   end
 
+  resources :shared_listings
+
   resources :documents
-  
-  resources :shared_packages
   
   namespace :admin do
     root :to => "base#index"

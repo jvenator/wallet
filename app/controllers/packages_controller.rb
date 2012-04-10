@@ -89,6 +89,7 @@ class PackagesController < ApplicationController
     package = Package.find(params[:id])
     target = params[:email].downcase
     shared_package = package.share_package(current_user, target)
+    
     if shared_package.persisted?
       flash[:notice] = "Package shared successfully"
     else
