@@ -16,7 +16,7 @@ class PackagesController < ApplicationController
   # GET /packages/1
   # GET /packages/1.json
   def show
-    @package = Package.find(params[:id])
+    @package = current_user.packages.find(params[:id])
     @documents = current_user.documents-@package.documents
 
     respond_to do |format|
@@ -38,7 +38,7 @@ class PackagesController < ApplicationController
 
   # GET /packages/1/edit
   def edit
-    @package = Package.find(params[:id])
+    @package = current_user.packages.find(params[:id])
   end
 
   # POST /packages
@@ -60,7 +60,7 @@ class PackagesController < ApplicationController
   # PUT /packages/1
   # PUT /packages/1.json
   def update
-    @package = Package.find(params[:id])
+    @package = current_user.packages.find(params[:id])
 
     respond_to do |format|
       if @package.update_attributes(params[:package])
@@ -76,7 +76,7 @@ class PackagesController < ApplicationController
   # DELETE /packages/1
   # DELETE /packages/1.json
   def destroy
-    @package = Package.find(params[:id])
+    @package = current_user.packages.find(params[:id])
     @package.destroy
 
     respond_to do |format|
@@ -86,7 +86,7 @@ class PackagesController < ApplicationController
   end
   
   def share
-    package = Package.find(params[:id])
+    package = current_user.packages.find(params[:id])
     target = params[:email].downcase
     shared_package = package.share_package(current_user, target)
     

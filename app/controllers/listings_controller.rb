@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @documents = current_user.documents-@listing.documents
 
     respond_to do |format|
@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   # POST /listings
@@ -60,7 +60,7 @@ class ListingsController < ApplicationController
   # PUT /listings/1
   # PUT /listings/1.json
   def update
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
 
     respond_to do |format|
       if @listing.update_attributes(params[:listing])
@@ -76,7 +76,7 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @listing.destroy
 
     respond_to do |format|
@@ -86,7 +86,7 @@ class ListingsController < ApplicationController
   end
   
   def share
-    listing = Listing.find(params[:id])
+    listing = current_user.listings.find(params[:id])
     target = params[:email].downcase
     shared_listing = listing.share_listing(current_user, target)
     

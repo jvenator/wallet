@@ -14,7 +14,7 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-    @document = Document.find(params[:id])
+    @document = current_user.documents.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
-    @document = Document.find(params[:id])
+    @document = current_user.documents.find(params[:id])
   end
 
   # POST /documents
@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
   # PUT /documents/1
   # PUT /documents/1.json
   def update
-    @document = Document.find(params[:id])
+    @document = current_user.documents.find(params[:id])
 
     respond_to do |format|
       if @document.update_attributes(params[:document])
@@ -73,7 +73,7 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
-    @document = Document.find(params[:id])
+    @document = current_user.documents.find(params[:id])
     @document.destroy
 
     respond_to do |format|

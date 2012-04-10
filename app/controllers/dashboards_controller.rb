@@ -4,9 +4,9 @@ class DashboardsController < ApplicationController
   def show
     @documents = current_user.documents
     @packages = current_user.packages
-    @shared_packages = SharedPackage.where(:receiver_email => current_user.email)
+    @shared_packages = current_user.shared_packages.where(:receiver_email => current_user.email)
     @listings = current_user.listings
-    @shared_listings = SharedListing.where(:receiver_email => current_user.email)
+    @shared_listings = current_user.shared_listings.where(:receiver_email => current_user.email)
     
     if current_user.renter?
       render "dashboard_renter"
