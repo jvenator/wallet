@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410034528) do
+ActiveRecord::Schema.define(:version => 20120412215137) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(:version => 20120410034528) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "listings", ["identifier"], :name => "index_listings_on_identifier"
+
+  create_table "package_listings", :force => true do |t|
+    t.integer  "package_id"
+    t.integer  "listing_id"
+    t.string   "listing_identifier"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "package_listings", ["listing_id"], :name => "index_package_listings_on_listing_id"
+  add_index "package_listings", ["package_id"], :name => "index_package_listings_on_package_id"
+
   create_table "packages", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -67,10 +80,11 @@ ActiveRecord::Schema.define(:version => 20120410034528) do
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
+    t.string   "listing_identifier"
   end
 
   create_table "users", :force => true do |t|

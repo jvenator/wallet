@@ -18,7 +18,7 @@ class Package < ActiveRecord::Base
     end
   end
   
-  def share_package(sender, receiver_email)
+  def share_by_email(sender, receiver_email)
     receiver = User.find_by_email(receiver_email)
     shared_package = self.shared_packages.create( :receiver => receiver,
                                                   :receiver_email => receiver_email,

@@ -88,7 +88,7 @@ class PackagesController < ApplicationController
   def share
     package = current_user.packages.find(params[:id])
     target = params[:email].downcase
-    shared_package = package.share_package(current_user, target)
+    shared_package = package.share_by_email(current_user, target)
     
     if shared_package.persisted?
       flash[:notice] = "Package shared successfully"
