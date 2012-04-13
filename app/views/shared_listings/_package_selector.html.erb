@@ -1,0 +1,33 @@
+<table class="table table-striped table-thirds">
+  <thead>
+    <tr>
+      <th>Available Packages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @packages.each do |d| %>
+    <tr>
+      <td><%= link_to "+", shared_listing_packages_path(@listing, :id => l),
+              :method => 'post', :remote => true, :class => "btn btn-mini btn-success" %>
+          <%= l.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<table class="table table-striped table-thirds">
+  <thead>
+    <tr>
+      <th>Packages linked to this Shared Listing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shared_listing.packages.each do |d| %>
+    <tr>
+      <td><%= link_to "-", shared_listing_packages_path(@listing, :id => l),
+              :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
+          <%= l.name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
