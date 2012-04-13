@@ -5,7 +5,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @packages.each do |d| %>
+    <% @packages.each do |l| %>
     <tr>
       <td><%= link_to "+", shared_listing_packages_path(@listing, :id => l),
               :method => 'post', :remote => true, :class => "btn btn-mini btn-success" %>
@@ -21,7 +21,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @shared_listing.packages.each do |d| %>
+    <% @shared_listing.packages.each do |l| %>
     <tr>
       <td><%= link_to "-", shared_listing_packages_path(@listing, :id => l),
               :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
