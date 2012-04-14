@@ -11,8 +11,8 @@ class SharedListing < ActiveRecord::Base
   end
   
   def remove_package(package)
-    self.package_shared_listings.where(:package_id => package_id).each do |package_shared_listing|
-      package_shared_listing.destroy
+    self.package_shared_listings.where(:package_id => package_id).each do |p|
+      p.destroy
     end
   end
 end

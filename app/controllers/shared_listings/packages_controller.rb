@@ -1,5 +1,5 @@
-class Share_Listings::PackagesController < ApplicationController
-#  before_filter authenticate_user!
+class SharedListings::PackagesController < ApplicationController
+
   def create
     @shared_listing = Listing.find(params[:listing_id])
     Package.where(["id IN (?)", params[:id]]).each do |d|

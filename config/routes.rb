@@ -22,9 +22,6 @@ Wallet::Application.routes.draw do
 
   resources :shared_listings do
     resource :packages, :controller => 'shared_listings/packages'
-    member do
-      post :share
-    end
   end
 
   resources :documents
