@@ -7,6 +7,14 @@ gem 'rails', '3.2.1'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'guard'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'factory_girl'
 end
 
 group :deploy do
