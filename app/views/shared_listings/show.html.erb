@@ -1,36 +1,36 @@
 <p>
-  <h2>
-    <%= @shared_listing.listing.user.first_name %> <%= @shared_listing.listing.user.last_name %> - <%= @shared_listing.listing.identifier %>
-  </h2>
-  <div class="form-actions">
-    <%= link_to 'Dashboard', dashboard_path, :class => 'btn btn-mini btn-info'  %>
-  </div>
+<h2>
+  <%= @listing_user.first_name %> <%= @listing_user.last_name %> - <%= @shared_listing.listing.identifier %>
+</h2>
+<div class="form-actions">
+  <%= link_to 'Dashboard', dashboard_path, :class => 'btn btn-mini btn-info' %>
+</div>
 </p>
 <div class="table table-half">
   <h3>Profile:</h3>
   <ul class="unstyled">
-    <li><%= mail_to @shared_listing.listing.user.email %></li>
-    <li><% unless @shared_listing.listing.user.mobile_num.blank? %><%= @shared_listing.listing.user.mobile_num %><% end %></li>
-    <li><% unless @shared_listing.listing.user.home_num.blank? %><%= @shared_listing.listing.user.home_num %><% end %></li>
+    <li><%= mail_to @listing_user.email %></li>
+    <li><%= @listing_user.mobile_num %></li>
+    <li><%= @listing_user.home_num %></li>
   </ul>
-    <p>
-      <% unless @shared_listing.listing.user.address_1.blank? %><%= @shared_listing.listing.user.address_1 %><% end %><br />
-      <% unless @shared_listing.listing.user.address_2.blank? %><%= @shared_listing.listing.user.address_2 %><% end %>
-      <% unless @shared_listing.listing.user.city.blank? %><%= @shared_listing.listing.user.city %><% end %>, 
-      <% unless @shared_listing.listing.user.state.blank? %><%= @shared_listing.listing.user.state %><% end %>  
-      <% unless @shared_listing.listing.user.zip.blank? %><%= @shared_listing.listing.user.zip %><% end %>
-    </p>
+  <p>
+    <%= @listing_user.address_1 %><br/>
+    <%= @listing_user.address_2 %>
+    <%= @listing_user.city %>,
+    <%= @listing_user.state %>
+    <%= @listing_user.zip %>
+  </p>
 </div>
 <div class="table table-striped table-half">
   <table>
     <thead>
-      <tr>
-        <th><h3>Documents</h3></th>
-        <th></th>
-      </tr>
+    <tr>
+      <th><h3>Documents</h3></th>
+      <th></th>
+    </tr>
     </thead>
     <tbody>
-    <% @shared_listing.listing.documents.each do |document| %>
+    <% @documents.each do |document| %>
       <tr>
         <td><%= document.name %></td>
         <td><%= link_to "download", document.file.url, :target => "_blank", :class => "btn btn-mini" %></td>

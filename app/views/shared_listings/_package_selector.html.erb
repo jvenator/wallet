@@ -7,13 +7,14 @@
   <tbody>
     <% @packages.each do |l| %>
     <tr>
-      <td><%= link_to "+", shared_listing_packages_path(@listing, :id => l),
+      <td><%= link_to "+", shared_listing_packages_path(@shared_listing, :id => l),
               :method => 'post', :remote => true, :class => "btn btn-mini btn-success" %>
           <%= l.name %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
 <table class="table table-striped table-thirds">
   <thead>
     <tr>
@@ -23,7 +24,7 @@
   <tbody>
     <% @shared_listing.packages.each do |l| %>
     <tr>
-      <td><%= link_to "-", shared_listing_packages_path(@listing, :id => l),
+      <td><%= link_to "-", shared_listing_packages_path(@shared_listing, :id => l),
               :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
           <%= l.name %>
       </td>
