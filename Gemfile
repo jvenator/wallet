@@ -9,6 +9,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard'
+  gem 'debugger'
 end
 
 group :test do
