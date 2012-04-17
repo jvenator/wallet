@@ -1,17 +1,16 @@
 class SharedListings::PackagesController < ApplicationController
 
   def create
-    @shared_listing = Listing.find(params[:listing_id])
-    Package.where(["id IN (?)", params[:id]]).each do |d|
-    #Looks for document records with the params ID
-      @shared_listing.add_package(d)
-    end
+    package = Package.find(params[:id])
+    @shared_listing = SharedListing.find(params[:shared_listing_id])
+    @shared_listing.add_package(package)
     @packages = current_user.packages.where(["id NOT IN (?)", @shared_listing.package_ids]).order("name asc")
     render("refresh_package_selector", :status => :created)
   end
+
   def destroy
-    @shared_listing = Listing.find(params[:listing_id])
-    @shared_listing.remove_package(Listing.find(params[:id]))
+    @shared_listing = SharedListing.find(params[:shared_listing_id])
+    @shared_listing.remove_package(Package.find(params[:id]))
     
     if !@shared_listing.package_ids.empty?
       @packages = current_user.packages.where(["id NOT IN (?)",

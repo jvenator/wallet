@@ -3,8 +3,8 @@ class SharedListingsController < ApplicationController
   
   def show
     @shared_listing = current_user.shared_listings.find(params[:id])
-    @packages = current_user.packages-shared_listing.packages
-    # if you replace the above line with \\@packages = current_user.packages// it tells you
-    # that a route is missing even though it shows up in rake routes
+    @listing_user = @shared_listing.listing.user
+    @documents = @shared_listing.listing.documents
+    @packages = current_user.packages.where(["id NOT IN (?)", @shared_listing.package_ids]).order("name asc")
   end
 end
