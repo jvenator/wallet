@@ -15,6 +15,7 @@ Wallet::Application.routes.draw do
   
   resources :listings do
     resource :documents, :controller => 'listings/documents'
+    resource :packages, :controller => 'listings/packages'
     member do
       post :share
     end

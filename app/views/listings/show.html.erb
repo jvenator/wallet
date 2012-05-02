@@ -5,6 +5,29 @@
        - (#<%= @listing.identifier %>)
     <% end%>
   </h3>
+  <div>
+    <h4>Renter Packages</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shared_listings.each do |sl| %>
+          <% sl.packages.each do |p| %>
+          <tr>
+            <td><%= link_to p.user.full_name, package_path(p) %></td>
+            <td><%= p.identifier %></td>
+            <td><%= p.updated_at %></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <div class="form-actions">
     <%= link_to 'Dashboard', dashboard_path, :class => 'btn btn-mini btn-info'  %>
     <%= link_to 'Edit', edit_listing_path(@listing), :class => 'btn btn-mini' %>
