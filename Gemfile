@@ -9,7 +9,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard'
-  gem 'debugger'
+#  gem 'debugger'
 end
 
 group :test do
@@ -31,8 +31,8 @@ gem 'airbrake'
 gem 'devise'
 gem 'cancan'
 
-gem 'carrierwave'
-gem 'fog'
+gem 'carrierwave', '0.5.8'
+gem 'fog', '0.9.0'
 
 gem 'simple_form'
 
@@ -43,7 +43,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  gem 'therubyracer'
   
   gem 'twitter-bootstrap-rails'
   
