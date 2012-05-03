@@ -20,6 +20,10 @@ class Listing < ActiveRecord::Base
     end
   end
   
+  def received_packages
+    
+  end
+  
   def share_listing(sender, receiver_email)
     receiver = User.find_by_email(receiver_email)
     shared_listing = self.shared_listings.create( :receiver => receiver,
