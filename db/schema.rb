@@ -80,11 +80,10 @@ ActiveRecord::Schema.define(:version => 20120417011311) do
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
   end
 
   create_table "users", :force => true do |t|
