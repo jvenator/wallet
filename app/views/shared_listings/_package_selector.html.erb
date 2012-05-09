@@ -22,9 +22,9 @@
     </tr>
   </thead>
   <tbody>
-    <% @shared_listing.packages.each do |l| %>
+    <% @listing.packages.each do |l| %>
     <tr>
-      <td><%= link_to "-", shared_listing_packages_path(@shared_listing, :id => l),
+      <td><%= link_to "-", shared_listing_packages_path(@listing, :id => l),
               :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
           <%= l.name %>
       </td>

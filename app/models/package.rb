@@ -2,7 +2,9 @@ class Package < ActiveRecord::Base
 
   belongs_to :user
   has_many :document_packages, :dependent => :destroy
-  has_many :documents, :through => :document_packages
+  has_many :documents, :as => :renter_documents, :through => :document_packages
+  has_many :submitted_packages, :class_name => 'SubmittedPackages'
+  has_many :listings, :through => :submitted_packages
   has_many :shared_packages, :dependent => :destroy
   has_many :package_shared_listings
   has_many :shared_listings, :through => :package_shared_listings
