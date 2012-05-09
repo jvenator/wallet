@@ -3,6 +3,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :document_listings, :dependent => :destroy
   has_many :documents, :through => :document_listings
+  has_many :submitted_packages, :class_name => 'SubmittedPackages'
+  has_many :packages, :through => :submitted_packages
   has_many :shared_listings, :dependent => :destroy  
   
   validates :name, :length => { :minimum => 3, :maximum => 100 }
@@ -20,8 +22,14 @@ class Listing < ActiveRecord::Base
     end
   end
   
-  def received_packages
-    
+  def submit_package(package)
+    self.submitted_packages.create(:package => package)
+  end
+  
+  def unsubmit_package(package)
+    self.packages.where(:package_id => package.id).each do |p|
+      p.destroy
+    end
   end
   
   def share_listing(sender, receiver_email)
