@@ -33,6 +33,7 @@ gem 'cancan'
 
 gem 'carrierwave', '0.5.8'
 gem 'fog', '0.9.0'
+gem 'foreman'
 
 gem 'simple_form'
 

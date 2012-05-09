@@ -3,13 +3,9 @@ development:
   encoding: unicode
   database: wallet
   pool: 5
-  username: j
-  password: 
     
 test:
   adapter: postgresql
   encoding: unicode
   database: wallet
   pool: 5
-  username: j
-  password: 
