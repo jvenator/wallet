@@ -18,7 +18,7 @@
       <td><%= link_to user.first_name, [:admin, user] %></td>
       <td><%= link_to user.email, [:admin, user] %></td>
       <td><%= link_to "Edit", edit_admin_user_path(@admin, :id => user.id),
-              :method => 'get', :class => "btn" %></td>
+              :method => 'get', :class => "btn btn-mini" %></td>
       <td><%= user.renter? ? "X" : "" %></td>
       <td><%= user.owner_rep? ? "X" : "" %></td>
       <td><%= user.admin? ? "X" : "" %></td>
