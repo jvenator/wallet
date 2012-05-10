@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :first_name, :last_name, :mobile_num, :home_num, :address_1, :address_2, :city, :state, :zip, :renter, :owner_rep, :password, :password_confirmation, :remember_me
+  attr_accessible :role, :email, :first_name, :last_name, :mobile_num, :home_num, :address_1, :address_2, :city, :state, :zip, :password, :password_confirmation, :remember_me
   has_many :documents, :dependent => :destroy
   has_many :packages
   has_many :shared_packages, :as => :receiver
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :shared_listings, :as => :receiver
   has_many :user_roles, :class_name => "UserRoles"
   has_many :roles, :through => :user_roles
+
+  accepts_nested_attributes_for :roles
 
   
   after_create :generate_receiver_id
@@ -40,6 +42,24 @@ class User < ActiveRecord::Base
   def admin?
      has_role?(:admin)
   end
+
+  def renter?
+     has_role?(:renter)
+  end
+
+  def owner_rep?
+     has_role?(:manager) || has_role?(:broker)
+  end
+
+  def manager?
+     has_role?(:manager)
+  end
+
+  def broker?
+     has_role?(:broker)
+  end
+
+
     
   
   private

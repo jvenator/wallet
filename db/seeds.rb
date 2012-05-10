@@ -8,12 +8,13 @@
 # Roles
 roles = Role.create!([{:name => "admin"}, {:name => "manager"}, {:name => "broker"}, {:name => "renter"}])
 
-admin = User.new(first_name: "Joseph", last_name: "DeVenuta", email: "j@venator.vc", password: "password", password_confirmation: "password", renter: "true", owner_rep: "true")
-admin.admin = true
+admin = User.new(first_name: "Joe", last_name: "Admin", email: "j@example.com", password: "password", password_confirmation: "password")
+admin.assign_role(:admin)
 admin.save!
-
-renter = User.create!(first_name: "Ronnie", last_name: "Renter", email: "ronnie@renter.com", password: "password", password_confirmation: "password", renter: "true", mobile_num: "646-555-8181", address_1: "123 Renter Lane", address_2: "Apt 7", city: "New York", state: "NY", zip: "10003")
-
-OwnerRep = User.create!(first_name: "Manager", last_name: "Girl", email: "manager@manager.com", password: "password", password_confirmation: "password", owner_rep: "true", mobile_num: "917-555-8181", address_1: "123 Owner Lane", address_2: "Suite 1134", city: "New York", state: "NY", zip: "10022")
-
+broker = User.create!(first_name: "Jesse", last_name: "Broker", email: "jesse@broker.com", password: "password", password_confirmation: "password", mobile_num: "999-999-9999")
+broker.assign_role(:broker)
+renter = User.create!(first_name: "Ronnie", last_name: "Renter", email: "ronnie@renter.com", password: "password", password_confirmation: "password", mobile_num: "646-555-8181", address_1: "123 Renter Lane", address_2: "Apt 7", city: "New York", state: "NY", zip: "10003")
+renter.assign_role(:renter)
+manager = User.create!(first_name: "Pat", last_name: "Manager", email: "pat@manager.com", password: "password", password_confirmation: "password", mobile_num: "917-555-8181", address_1: "123 Owner Lane", address_2: "Suite 1134", city: "New York", state: "NY", zip: "10022")
+manager.assign_role(:manager)
 
