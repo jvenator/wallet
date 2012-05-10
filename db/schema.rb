@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509195759) do
+ActiveRecord::Schema.define(:version => 20120510002723) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -53,25 +53,32 @@ ActiveRecord::Schema.define(:version => 20120509195759) do
     t.string   "identifier"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "shared_listings", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "listing_id"
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "listing_identifier"
+    t.string   "package_identifier"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "shared_packages", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
   end
 
   create_table "submitted_packages", :force => true do |t|
@@ -84,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20120509195759) do
 
   add_index "submitted_packages", ["listing_id"], :name => "index_submitted_packages_on_listing_id"
   add_index "submitted_packages", ["package_id"], :name => "index_submitted_packages_on_package_id"
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

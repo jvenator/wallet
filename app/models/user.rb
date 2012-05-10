@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :shared_packages, :as => :receiver
   has_many :listings
   has_many :shared_listings, :as => :receiver
+  has_many :user_roles, :class_name => "UserRoles"
+  has_many :roles, :through => :user_roles
+
   
   after_create :generate_receiver_id
   
@@ -20,6 +23,22 @@ class User < ActiveRecord::Base
   
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def assign_role(role_sym)
+     roles << Role.where(:name => role_sym)
+  end
+
+  def remove_role(role_sym)
+     #TODO
+  end
+
+  def has_role?(role_sym)
+    roles.any? {|r| r.name.underscore.to_sym == role_sym}
+  end
+
+  def admin?
+     has_role?(:admin)
   end
     
   
