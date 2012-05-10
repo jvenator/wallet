@@ -9,7 +9,7 @@ group :development, :test do
   gem 'pg'
   gem 'rspec-rails'
   gem 'guard'
-#  gem 'debugger'
+  gem 'debugger'
 end
 
 group :test do
