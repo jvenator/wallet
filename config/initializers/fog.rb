@@ -1,3 +1,10 @@
+if !Rails.env.production?
+  require 'yaml'
+  config = YAML.load_file(Rails.root.join("config", "services.yml"))
+  ENV['S3_KEY'] = config["s3"]["key"]
+  ENV['S3_SECRET'] = config["s3"]["secret"]
+end
+
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',       # required
@@ -10,6 +17,5 @@ CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/uploads"    # 
   # config.fog_host       = 'https://assets.example.com'            # optional, defaults to nil
   config.fog_public     = false                                   # optional, defaults to true
-  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
-  config.s3_headers = {"Content-Disposition" => "attachment;"}
+  config.fog_attributes = {'Cache-Control'=>'max-age=315576000', "Content-Disposition" => "attachment;"}  # optional, defaults to {}
 end
