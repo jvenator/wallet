@@ -9,7 +9,7 @@
   <%= f.input :city %>
   <%= f.input :state %>
   <%= f.input :zip, :label => "Zip code" %>
-  <%= f.association :roles, :as => :radio_buttons %>
+  <%= f.association :roles, :collection => Role.to_select, :as => :radio_buttons %>
 </div>
 
 <div class="actions">

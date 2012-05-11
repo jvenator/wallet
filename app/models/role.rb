@@ -6,5 +6,9 @@ class Role < ActiveRecord::Base
 
   attr_accessible :name
 
+  def self.to_select
+    where("name in ('manager','renter', 'broker')")
+  end
+
 
 end
