@@ -9,7 +9,7 @@ class Package < ActiveRecord::Base
   has_many :package_shared_listings
   has_many :shared_listings, :through => :package_shared_listings
   
-  before_save :generate_package_identifier
+  before_create :generate_package_identifier
   
   
   def add_document(document)

@@ -10,7 +10,7 @@ class Listing < ActiveRecord::Base
   validates :name, :length => { :minimum => 3, :maximum => 100 }
   validates :name, :presence => true
   
-  after_create :generate_listing_identifier
+  before_create :generate_listing_identifier
   
   def add_document(document)
     self.document_listings.create(:document => document)
