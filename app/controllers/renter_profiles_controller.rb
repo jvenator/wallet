@@ -3,20 +3,10 @@ class RenterProfilesController < ApplicationController
 
   def show
     @renter_profile = current_user.renter_profiles.find(params[:id])
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @renter_profile }
-    end
   end
   
   def new
-    @renter_profile = RenterProfile.new(:user => current_user)
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @renter_profile }
-    end
+    @renter_profile = RenterProfile.new
   end
   
   def edit
@@ -24,33 +14,23 @@ class RenterProfilesController < ApplicationController
   end
 
   def create
-    @renter_profile = current_user.renter_profile.build(params[:id])
-          
-    respond_to do |format|
-      if @renter_profile.save
-        format.html { redirect_to root_path, notice: 'Your profile was saved!' }
-        # format.json { render json: renter_profile_path(@renter_profile), status: :created, location: @renter_profile }
-      else
-        format.html { render action: "new" }
-        # format.json { render json: @renter_profile.errors, status: :unprocessable_entity }
-      end
+    @renter_profile = RenterProfile.create(params[:renter_profile])
+
+    if @renter_profile.save
+      redirect_to root_path, notice: 'Your profile was saved!'
+    else
+      render action: "new"
     end
   end
 
   def update
-    @renter_profile = current_user.renter_profiles.find(params[:id])
-    
-    respond_to do |format|
-      if @renter_profile.update_attributes(params[:renter_profile])
-        format.html { redirect_to dashboard_path, notice: 'Your profile was saved!' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @renter_profile.errors, status: :unprocessable_entity }
-      end
+    @renter_profile = current_user.renter_profile
+
+    if @renter_profile.update_attributes(params[:renter_profile])
+      redirect_to dashboard_path, notice: 'Your profile was saved!'
+    else
+      render action: "edit"
     end
   end
   
-
-
 end

@@ -1,23 +1,4 @@
-<h2>Edit Renter Profile</h2>
-<%= simple_form_for @renter_profile do |f| %>
-  <%= f.error_notification %>
-  <div class="inputs">
-    <%= f.input :first_name, :required => true, :autofocus => true %>
-    <%= f.input :last_name, :required => true %>
-    <%= f.input :mobile_num, :label => "Mobile number" %>
-    <%= f.input :home_num, :label => "Home number" %>
-    <%= f.input :work_num, :label => "Work number" %>
-    <%= f.input :address_1, :label => "Address 1" %>
-    <%= f.input :address_2, :label => "Address 2" %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :zip, :label => "Zip code" %>
-    <%= f.input :country %>
-    <%= f.input :date_of_birth, :label => "Date of Birth (only MM/YY will be revealed to brokers & managers)" %>
-  </div>
-  <div class="actions">
-    <%= f.button :submit, "Save" %>
-  </div>
-<% end %>
+<h2>Renter Profile</h2>
+<%= render :partial => 'form' %>
 
 <%= link_to "Dashboard", dashboard_path %>
