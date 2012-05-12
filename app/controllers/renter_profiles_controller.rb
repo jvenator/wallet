@@ -1,8 +1,12 @@
 class RenterProfilesController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    redirect_to root_path
+  end
+  
   def show
-    @renter_profile = current_user.renter_profiles.find(params[:id])
+    @renter_profile = RenterProfile.find(params[:id])
   end
   
   def new
@@ -27,7 +31,7 @@ class RenterProfilesController < ApplicationController
     @renter_profile = current_user.renter_profile
 
     if @renter_profile.update_attributes(params[:renter_profile])
-      redirect_to dashboard_path, notice: 'Your profile was saved!'
+      redirect_to root_path, notice: 'Your profile was saved!'
     else
       render action: "edit"
     end
