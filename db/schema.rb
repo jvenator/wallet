@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510015012) do
+ActiveRecord::Schema.define(:version => 20120512024244) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -53,6 +53,26 @@ ActiveRecord::Schema.define(:version => 20120510015012) do
     t.string   "identifier"
   end
 
+  create_table "renter_profiles", :force => true do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "mobile_num"
+    t.string   "home_num"
+    t.string   "work_num"
+    t.string   "fax_num"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.date     "date_of_birth"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -65,20 +85,19 @@ ActiveRecord::Schema.define(:version => 20120510015012) do
     t.integer  "listing_id"
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
-    t.string   "package_identifier"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "shared_packages", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
+    t.string   "listing_identifier"
   end
 
   create_table "submitted_packages", :force => true do |t|

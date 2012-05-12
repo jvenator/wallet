@@ -2,6 +2,8 @@ Wallet::Application.routes.draw do
   
   devise_for :users
   
+  resources :renter_profiles
+  
   resource :dashboard
 
   resources :packages do

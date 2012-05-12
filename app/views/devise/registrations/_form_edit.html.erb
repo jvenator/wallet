@@ -9,7 +9,7 @@
   <%= f.input :city %>
   <%= f.input :state %>
   <%= f.input :zip, :label => "Zip code" %>
-  <strong>Only select one...</strong>
+  <strong>Please identify your role...</strong>
   <%= f.association :roles, :collection => Role.to_select, :as => :radio_buttons %>
   <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
   <%= f.input :password_confirmation, :required => false %>
