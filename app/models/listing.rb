@@ -10,7 +10,7 @@ class Listing < ActiveRecord::Base
   validates :name, :length => { :minimum => 3, :maximum => 100 }
   validates :name, :presence => true
   
-  before_save :generate_listing_identifier
+  after_create :generate_listing_identifier
   
   def add_document(document)
     self.document_listings.create(:document => document)
@@ -43,7 +43,8 @@ class Listing < ActiveRecord::Base
     shared_listing
   end
   
-  private  
+  private
+
   def generate_listing_identifier
     self.identifier = SecureRandom.urlsafe_base64[0..7].upcase
   end
