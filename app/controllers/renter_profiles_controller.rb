@@ -1,4 +1,5 @@
 class RenterProfilesController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @renter_profile = current_user.renter_profiles.find(params[:id])
@@ -10,8 +11,7 @@ class RenterProfilesController < ApplicationController
   end
   
   def new
-    @renter_profile = RenterProfile.new
-    render new
+    @renter_profile = RenterProfile.new(:user => current_user)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -20,19 +20,19 @@ class RenterProfilesController < ApplicationController
   end
   
   def edit
-    @renter_profile = current_user.renter_profiles.find(params[:id])
+    @renter_profile = current_user.renter_profile
   end
 
   def create
-    @renter_profile = current_user.renter_profiles.build(params[:renter_profile])
+    @renter_profile = current_user.renter_profile.build(params[:id])
           
     respond_to do |format|
       if @renter_profile.save
-        format.html { redirect_to dashboard_path(@renter_profile), notice: 'Your profile was saved!' }
-        format.json { render json: renter_profile_path(@renter_profile), status: :created, location: @renter_profile }
+        format.html { redirect_to root_path, notice: 'Your profile was saved!' }
+        # format.json { render json: renter_profile_path(@renter_profile), status: :created, location: @renter_profile }
       else
         format.html { render action: "new" }
-        format.json { render json: @renter_profile.errors, status: :unprocessable_entity }
+        # format.json { render json: @renter_profile.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -7,6 +7,7 @@ class DashboardsController < ApplicationController
     @shared_packages = current_user.shared_packages.where(:receiver_email => current_user.email)
     @listings = current_user.listings
     @shared_listings = current_user.shared_listings.where(:receiver_email => current_user.email)
+    @renter_profile = current_user.renter_profile
 
 
     if current_user.admin?
