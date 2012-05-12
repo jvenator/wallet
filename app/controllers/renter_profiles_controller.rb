@@ -11,8 +11,7 @@ class RenterProfilesController < ApplicationController
   
   def new
     @renter_profile = RenterProfile.new
-    render new
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @renter_profile }
