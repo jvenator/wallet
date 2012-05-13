@@ -1,5 +1,7 @@
 Wallet::Application.routes.draw do
   
+  get "renter_profile/steps"
+
   devise_for :users
   
   resource :dashboard
@@ -32,7 +34,9 @@ Wallet::Application.routes.draw do
     resources :users
   end
   
+  resources :renter_profile_steps
   resources :renter_profiles
+  
   
   root :to => 'pages#home'
 
