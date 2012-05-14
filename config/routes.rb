@@ -1,6 +1,6 @@
 Wallet::Application.routes.draw do
   
-  get "renter_profile/steps"
+  root :to => 'pages#home'
 
   devise_for :users
   
@@ -36,9 +36,6 @@ Wallet::Application.routes.draw do
   
   resources :renter_profile_steps
   resources :renter_profiles
-  
-  
-  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
