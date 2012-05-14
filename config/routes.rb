@@ -1,7 +1,10 @@
 Wallet::Application.routes.draw do
-  
+
+  root :to => 'pages#home'
+
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
-  
+
+
   resource :dashboard
 
   resources :packages do
@@ -32,9 +35,8 @@ Wallet::Application.routes.draw do
     resources :users
   end
   
+  resources :renter_profile_steps
   resources :renter_profiles
-  
-  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

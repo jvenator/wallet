@@ -36,6 +36,7 @@ gem 'fog', '0.9.0'
 gem 'foreman'
 
 gem 'simple_form'
+gem 'wicked'
 gem 'country_select'
 
 # omniauth

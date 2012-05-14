@@ -7,15 +7,8 @@
     <%= f.input :mobile_num, :label => "Mobile number" %>
     <%= f.input :home_num, :label => "Home number" %>
     <%= f.input :work_num, :label => "Work number" %>
-    <%= f.input :address_1, :label => "Address 1" %>
-    <%= f.input :address_2, :label => "Address 2" %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :zip, :label => "Zip code" %>
-    <%= f.input :country %>
-    <%= f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :order => [:month, :day, :year], :label => "Date of Birth (only MM/YY will be revealed to brokers & managers)" %>
   </div>
   <div class="actions">
-    <%= f.button :submit, "Save" %>
+    <%= f.button :submit, "Continue -->" %>
   </div>
 <% end %>
