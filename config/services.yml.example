@@ -5,3 +5,7 @@ s3:
 facebook:
   app_key: 'key'
   app_secret: 'secret'
+
+dwolla:
+  app_key: 'key'
+  app_secret: 'secret'
