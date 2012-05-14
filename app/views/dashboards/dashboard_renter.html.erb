@@ -1,9 +1,9 @@
 <h3>
 Renter Dashboard 
 <% if current_user.renter_profile.present? %>
-<%= link_to 'Profile', edit_renter_profile_path(@renter_profile), :class => 'btn btn-mini' %>
+<%= link_to 'Profile', renter_profile_step_path(:address), :class => 'btn btn-mini' %>
 <% else %>
-<%= link_to 'Profile Setup', new_renter_profile_path, :class => 'btn btn-mini' %>
+<%= link_to 'Profile Setup', renter_profile_step_path(:address), :class => 'btn btn-mini' %>
 <% end %>
 </h3>
 
