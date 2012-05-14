@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514064347) do
+ActiveRecord::Schema.define(:version => 20120514080105) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20120514064347) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.string   "facebook_token"
+    t.string   "dwolla_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

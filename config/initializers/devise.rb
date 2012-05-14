@@ -4,6 +4,8 @@ if !Rails.env.production?
   config = YAML.load_file(Rails.root.join("config", "services.yml"))
   ENV['FB_APP_KEY'] = config["facebook"]["app_key"]
   ENV['FB_APP_SECRET'] = config["facebook"]["app_secret"]
+  ENV['DWOLLA_APP_KEY'] = config["dwolla"]["app_key"]
+  ENV['DWOLLA_APP_SECRET'] = config["dwolla"]["app_secret"]
 end
 
 Devise.setup do |config|
@@ -218,6 +220,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :facebook, ENV['FB_APP_KEY'], ENV['FB_APP_SECRET']
+  config.omniauth :dwolla, ENV['DWOLLA_APP_KEY'], ENV['DWOLLA_APP_SECRET'], :scope => 'accountinfofull|contacts|transactions|balance|send|request'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

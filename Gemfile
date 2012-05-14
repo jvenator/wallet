@@ -40,6 +40,7 @@ gem 'country_select'
 
 # omniauth
 gem "omniauth-facebook"
+gem "omniauth-dwolla"
 
 # Gems used only for assets and not required
 # in production environments by default.
