@@ -16,3 +16,4 @@
 .idea
 /config/database.yml
 /config/services.yml
+.env
