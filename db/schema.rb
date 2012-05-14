@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512024244) do
+ActiveRecord::Schema.define(:version => 20120514064347) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(:version => 20120512024244) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.string   "identifier"
+  end
+
+  create_table "providers", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "access_token"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "renter_profiles", :force => true do |t|

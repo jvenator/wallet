@@ -1,3 +1,7 @@
 s3:
   key: key
   secret: secret
+
+facebook:
+  app_key: 'key'
+  app_secret: 'secret'

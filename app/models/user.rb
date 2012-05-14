@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :email, :first_name, :last_name, :mobile_num, :home_num, :address_1, :address_2, :city, :state, :zip, :password, :password_confirmation, :remember_me
@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+
+  # Roles
   def assign_role(role_sym)
      roles << Role.where(:name => role_sym)
   end
@@ -58,6 +60,18 @@ class User < ActiveRecord::Base
 
   def broker?
      has_role?(:broker)
+  end
+
+  # Omniauth
+
+  def self.find_for_facebook_oauth(token, signed_in_resource=nil)
+     data = token.extra.raw_info
+
+     if user = self.find_by_email(data.email)
+       user
+     else
+       self.create!(:email => data.email, :first_name => data.first_name, :last_name => data.last_name, :password => Devise.friendly_token[0,20])
+     end
   end
 
 
