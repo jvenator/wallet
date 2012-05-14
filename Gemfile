@@ -33,6 +33,7 @@ gem 'fog', '0.9.0'
 
 
 gem 'simple_form'
+gem 'wicked'
 gem 'country_select'
 
 # Gems used only for assets and not required

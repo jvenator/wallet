@@ -1,0 +1,8 @@
+<h4>While not required, additional personal information will help us complete the application process faster when the time comes!</h4>
+<%= simple_form_for @renter_profile, url: wizard_path do |f| %>
+  <div class="inputs">
+    <%= f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 100, :end_year => Date.today.year, :order => [:month, :day, :year], :label => "Date of Birth (only MM/YY will be revealed to brokers & managers)" %>
+  <div class="actions">
+    <%= f.button :submit, "Finish" %>
+  </div>
+<% end %>
