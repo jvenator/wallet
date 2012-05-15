@@ -1,6 +1,6 @@
 <p>
 <h2>
-  <%= @listing_user.first_name %> <%= @listing_user.last_name %> - <%= @shared_listing.listing.identifier %>
+  <%= @listing.name %> (<%= @shared_listing.listing.identifier %>)
 </h2>
 <div class="form-actions">
   <%= link_to 'Dashboard', dashboard_path, :class => 'btn btn-mini btn-info' %>

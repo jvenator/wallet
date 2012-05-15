@@ -16,14 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @shared_listings.each do |sl| %>
-          <% sl.packages.each do |p| %>
-          <tr>
-            <td><%= link_to p.user.full_name, package_path(p) %></td>
-            <td><%= p.identifier %></td>
-            <td><%= p.updated_at %></td>
-          </tr>
-          <% end %>
+        <% @packages.each do |p| %>
+        <tr>
+          <td><%= link_to p.user.full_name, package_path(p) %></td>
+          <td><%= p.identifier %></td>
+          <td><%= p.updated_at %></td>
+        </tr>
         <% end %>
       </tbody>
     </table>

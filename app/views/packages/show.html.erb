@@ -2,7 +2,7 @@
   <h3>
     <%= @package.name %> 
     <% if @package.identifier.present? %>
-       - (#<%= @package.identifier %>)
+       - (<%= @package.identifier %>)
     <% end%>
   </h3>
   <div class="form-actions">
