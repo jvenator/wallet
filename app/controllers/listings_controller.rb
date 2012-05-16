@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.find(params[:id])
     @documents = current_user.documents-@listing.documents
     @shared_listings = @listing.shared_listings
+    @packages = @listing.packages
 
     respond_to do |format|
       format.html # show.html.erb

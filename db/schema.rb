@@ -93,20 +93,19 @@ ActiveRecord::Schema.define(:version => 20120514080105) do
     t.integer  "listing_id"
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
-    t.string   "package_identifier"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "shared_packages", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
+    t.string   "listing_identifier"
   end
 
   create_table "submitted_packages", :force => true do |t|

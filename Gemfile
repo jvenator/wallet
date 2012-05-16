@@ -6,7 +6,6 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'pg'
   gem 'rspec-rails'
   gem 'guard'
   gem 'debugger'
@@ -16,15 +15,13 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails'
   gem 'factory_girl'
+  gem 'shoulda-matchers'
 end
 
-group :deploy do
-  gem 'pg'
-end
-
+gem 'pg'
 gem 'thin'
 gem 'heroku'
-
+gem 'foreman'
 gem 'newrelic_rpm'
 gem 'airbrake'
 
@@ -33,7 +30,7 @@ gem 'cancan'
 
 gem 'carrierwave', '0.5.8'
 gem 'fog', '0.9.0'
-gem 'foreman'
+
 
 gem 'simple_form'
 gem 'wicked'
