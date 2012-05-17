@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517041649) do
+ActiveRecord::Schema.define(:version => 20120517024332) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20120517041649) do
     t.datetime "updated_at", :null => false
     t.string   "file"
     t.integer  "user_id"
+    t.date     "as_of_date"
+    t.string   "category"
   end
 
   create_table "listings", :force => true do |t|
@@ -51,17 +53,6 @@ ActiveRecord::Schema.define(:version => 20120517041649) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
     t.string   "identifier"
-  end
-
-  create_table "payments", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "payment_type"
-    t.float    "amount"
-    t.string   "via"
-    t.string   "receiver_type"
-    t.string   "receiver"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "renter_profiles", :force => true do |t|
@@ -96,20 +87,19 @@ ActiveRecord::Schema.define(:version => 20120517041649) do
     t.integer  "listing_id"
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
-    t.string   "package_identifier"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "shared_packages", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
+    t.string   "listing_identifier"
   end
 
   create_table "submitted_packages", :force => true do |t|
@@ -145,9 +135,16 @@ ActiveRecord::Schema.define(:version => 20120517041649) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "mobile_num"
+    t.string   "home_num"
+    t.string   "fax_num"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.string   "facebook_token"
     t.string   "dwolla_token"
-    t.string   "dwolla_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
