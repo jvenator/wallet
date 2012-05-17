@@ -2,6 +2,7 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Document</legend>
       <%= f.input :name, :required => true, :class => 'control-group' %>
+      <%= f.input :category, :collection => Document.categories, :value_method => :first, :label_method => :last, :include_blank => false %>
       <%= f.input :as_of_date, :as => :date, :label => "As of Date", :discard_day => true %>
 
     <div class="actions">

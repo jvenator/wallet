@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516230815) do
+ActiveRecord::Schema.define(:version => 20120517024332) do
 
   create_table "document_listings", :force => true do |t|
     t.integer  "document_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120516230815) do
     t.string   "file"
     t.integer  "user_id"
     t.date     "as_of_date"
+    t.string   "category"
   end
 
   create_table "listings", :force => true do |t|
