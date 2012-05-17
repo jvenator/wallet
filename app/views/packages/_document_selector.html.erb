@@ -25,7 +25,7 @@
     <tr>
       <td><%= link_to "-", package_documents_path(@package, :id => d),
               :method => 'delete', :remote => true, :class => "btn btn-mini btn-danger" %>
-          <%= d.name %>
+          <%= d.name %> <%= d.as_of_date %>
       </td>
     </tr>
     <% end %>

@@ -1,0 +1,12 @@
+<%= simple_form_for @document, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Document</legend>
+      <%= f.input :name, :required => true, :class => 'control-group' %>
+      <%= f.input :as_of_date, :as => :date, :label => "As of Date", :discard_day => true %>
+
+    <div class="actions">
+      <%= f.button :submit, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', root_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
