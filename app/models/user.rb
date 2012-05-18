@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :user_roles, :class_name => "UserRoles"
   has_many :roles, :through => :user_roles
   has_one :renter_profile, :dependent => :destroy
+  has_one :dwolla_user, :dependent => :destroy
+  has_one :dropbox_user, :dependent => :destroy
 
   accepts_nested_attributes_for :roles
 
@@ -64,6 +66,43 @@ class User < ActiveRecord::Base
 
   # Omniauth
 
+  def integrated_with?(provider)
+    if self.send(provider).present?
+      true
+    else
+      false
+    end
+  end
+
+  # Dwolla:  data, returned by env["omniauth.auth"]
+  # data: info[city, latitude, longitude, name, state, type], extra[nil], credentials[expires, token], provider, uid
+  def add_dwolla(data)
+    dw_user = DwollaUser.find_by_uid(data.uid)
+
+    if dw_user.nil?
+       dw_user = DwollaUser.create!(:uid => data.uid, :access_token => data.credentials.token)
+    end
+
+    self.update_attribute(:dwolla_user, dw_user)
+  end
+
+
+  # Dropbox: data, returned by env["omniauth.auth"]
+  # data: info[email, name, uid], quota_info[normal, quota, shared], referral_link, extra[access_token[token, secret]]]
+  # info:
+  def add_dropbox(data)
+    logger.info data.info.to_s
+    logger.info data.extra.to_s
+     db_user = DropboxUser.find_by_uid(data.uid.to_s)
+
+    if db_user.nil?
+      db_user = DropboxUser.create!(:uid => data.uid.to_s, :access_key => 'access', :access_secret => 'secret')
+    end
+
+    self.update_attribute(:dropbox_user, db_user)
+  end
+
+  # Check facebook-omniauth github page for breakdown of returned data
   def self.find_for_facebook_oauth(token, signed_in_resource=nil)
      data = token.extra.raw_info
 
@@ -74,32 +113,8 @@ class User < ActiveRecord::Base
      end
   end
 
-  def self.find_for_dwolla_oauth(data, signed_in_resource=nil)
-    # data returned by env["omniauth.auth"]
-    # data. info[city, latitude, longitude, name, state, type], extra[nil], credentials[expires, token], provider, uid
-    name = data.info.name ||= ""
-    if user = self.find_by_dwolla_token(data.credentials.token)
-      user
-    else
-      self.create!(:email => dwolla_email(data.uid), :first_name => split_name(name).first, :last_name => split_name(name).last, :password => Devise.friendly_token[0,20], :dwolla_token => data.credentials.token)
-    end
-  end
-
   
   private
-
-  def self.dwolla_email(uid)
-    "#{uid}@renterswallet.com"
-  end
-
-  def self.split_name(name)
-    n = name.split(' ')
-    if n.count > 2
-      return [name, ""]
-    else
-      return n
-    end
-  end
 
   def generate_receiver_id
     shared_packages << SharedPackage.where('receiver_email = ?', email.downcase)

@@ -1,3 +1,18 @@
 <h3> Accounts </h3>
 
-<%= @user %>
+name: <%= @user %> <br />
+
+<%= link_to "Edit Profile", edit_renter_profile_path(@user.renter_profile) %> <br />
+
+<%= link_to "Facebook login", "/authorize/facebook" %> <br />
+<%= link_to "Twitter login", "/authorize/twitter" %> <br />
+
+<div class="well">
+  <h5> API Integrations </h5>
+Dwolla: <%=  link_to activation_text(:dwolla_user), activation_url(:dwolla_user) %> <br />
+Dropbox: <%=  link_to activation_text(:dropbox_user), activation_url(:dropbox_user) %>
+</div>
+
+
+
+

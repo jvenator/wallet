@@ -9,3 +9,7 @@ facebook:
 dwolla:
   app_key: 'key'
   app_secret: 'secret'
+
+dropbox:
+  app_key: 'key'
+  app_secret: 'secret'

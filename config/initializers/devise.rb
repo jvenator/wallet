@@ -6,6 +6,9 @@ if !Rails.env.production?
   ENV['FB_APP_SECRET'] = config["facebook"]["app_secret"]
   ENV['DWOLLA_APP_KEY'] = config["dwolla"]["app_key"]
   ENV['DWOLLA_APP_SECRET'] = config["dwolla"]["app_secret"]
+  ENV['DROPBOX_APP_KEY'] = config["dropbox"]["app_key"]
+  ENV['DROPBOX_APP_SECRET'] = config["dropbox"]["app_secret"]
+  ENV['DROPBOX_ACCESS_TYPE'] = 'app_folder'
 end
 
 Devise.setup do |config|
@@ -221,6 +224,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :facebook, ENV['FB_APP_KEY'], ENV['FB_APP_SECRET']
   config.omniauth :dwolla, ENV['DWOLLA_APP_KEY'], ENV['DWOLLA_APP_SECRET'], :scope => 'accountinfofull|contacts|transactions|balance|send|request'
+  config.omniauth :dropbox, ENV['DROPBOX_APP_KEY'], ENV['DROPBOX_APP_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+
   before_filter :authenticate_user!
   # GET /documents
   # GET /documents.json

@@ -6,13 +6,7 @@
     This additional profile information is not required right now, 
     but will be needed eventually!</strong>
   </p>
-  <%= f.input :mobile_num, :label => "Mobile number" %>
-  <%= f.input :home_num, :label => "Home number" %>
-  <%= f.input :address_1, :label => "Address 1" %>
-  <%= f.input :address_2, :label => "Address 2" %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.input :zip, :label => "Zip code" %><br />
+
   <strong>Only select one...</strong>
   <%= f.association :roles, :collection => Role.to_select, :as => :radio_buttons %>
   <%= f.input :password, :required => true %>

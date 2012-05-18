@@ -39,6 +39,7 @@ gem 'country_select'
 # omniauth
 gem "omniauth-facebook"
 gem "omniauth-dwolla"
+gem "omniauth-dropbox"
 
 gem "dropbox-sdk"
 
