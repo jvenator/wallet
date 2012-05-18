@@ -109,7 +109,9 @@ class User < ActiveRecord::Base
      if user = self.find_by_email(data.email)
        user
      else
-       self.create!(:email => data.email, :first_name => data.first_name, :last_name => data.last_name, :password => Devise.friendly_token[0,20], :facebook_token => token.credentials.token)
+       user = self.create!(:email => data.email, :first_name => data.first_name, :last_name => data.last_name, :password => Devise.friendly_token[0,20], :facebook_token => token.credentials.token)
+       user.assign_role(:renter)
+       return user
      end
   end
 
