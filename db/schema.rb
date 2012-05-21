@@ -72,17 +72,6 @@ ActiveRecord::Schema.define(:version => 20120517233001) do
     t.string   "identifier"
   end
 
-  create_table "payments", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "payment_type"
-    t.float    "amount"
-    t.string   "via"
-    t.string   "receiver_type"
-    t.string   "receiver"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "renter_profiles", :force => true do |t|
     t.string   "first_name"
     t.string   "middle_name"
@@ -115,20 +104,19 @@ ActiveRecord::Schema.define(:version => 20120517233001) do
     t.integer  "listing_id"
     t.integer  "sender_id"
     t.string   "receiver_email"
-    t.string   "listing_identifier"
-    t.string   "package_identifier"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "shared_packages", :force => true do |t|
     t.string   "receiver_type"
     t.integer  "receiver_id"
     t.integer  "package_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "sender_id"
     t.string   "receiver_email"
+    t.string   "listing_identifier"
   end
 
   create_table "submitted_packages", :force => true do |t|
@@ -166,7 +154,6 @@ ActiveRecord::Schema.define(:version => 20120517233001) do
     t.string   "last_sign_in_ip"
     t.string   "facebook_token"
     t.string   "dwolla_token"
-    t.string   "dwolla_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

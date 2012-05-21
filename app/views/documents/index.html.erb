@@ -1,0 +1,169 @@
+<h2>Documents <%= link_to 'New', new_document_path, :class => 'btn btn-mini' %></h2>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#all" data-toggle="tab">All Docs</a></li>
+    <li><a href="#bank_statements" data-toggle="tab">Bank Statements</a></li>
+    <li><a href="#taxes" data-toggle="tab">Taxes</a></li>
+    <li><a href="#employment" data-toggle="tab">Employment</a></li>
+    <li><a href="#references" data-toggle="tab">References</a></li>
+    <li><a href="#miscellaneous" data-toggle="tab">Miscellaneous</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="all">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+    <div class="tab-pane" id="bank_statements">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.where(:category => "bank_statements").each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+    <div class="tab-pane" id="taxes">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.where(:category => "taxes").each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+    <div class="tab-pane" id="employment">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.where(:category => "employment").each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+    <div class="tab-pane" id="references">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.where(:category => "references").each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+    <div class="tab-pane" id="miscellaneous">
+      <table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Category</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @documents.where(:category => "miscellaneous").each do |document| %>
+			      <tr>
+			        <td>
+			          <%= link_to document.name, document_path(document) %> 
+			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			        </td>
+			        <td><%= category_name(document.category) %></td>
+			        <td>
+			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			        </td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+    </div>
+  </div>
+</div>
