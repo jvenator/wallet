@@ -6,13 +6,13 @@ class DwollaUser < ActiveRecord::Base
     @api ||= Dwolla::User.me(access_token)
   end
 
-  def send_money(other_user_id, amount, pin)
-    api.send_money_to(other_user_id, amount, pin)
+  def send_money(opts = {})
+    response = api.send_money_to(opts[:destination], opts[:amount], opts[:pin])
     # response is an id at transactions/send
   end
 
-  def request_money(other_user_id, amount, pin)
-    api.request_money_from(other_user_id, amount, pin)
+  def request_money(opts = {})
+    response = api.request_money_from(opts[:destination], opts[:amount], opts[:pin])
     # response is an id at transactions/request
   end
 

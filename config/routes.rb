@@ -1,12 +1,14 @@
 Wallet::Application.routes.draw do
 
-  resources :payments
-
   root :to => 'pages#home'
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
   match "account" => "account#show"
+
+  get "payments" => "payments#index"
+  post "payments/send_money" => "payments#send_money"
+  post "payments/request_money" => "payments#request_money"
 
   resource :dashboard
 

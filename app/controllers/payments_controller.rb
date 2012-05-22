@@ -1,79 +1,48 @@
 class PaymentsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :dwolla_user?, :only => [:send_money, :request_money]
+
   # GET /payments
   # GET /payments.json
   def index
-
+     # send to index view
 
   end
 
-  # GET /payments/1
-  # GET /payments/1.json
-  def show
-    @payment = Payment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @payment }
+  def send_money
+    #TODO handle dwolla exceptions
+    resp = dwolla_user.send_money(params)
+    logger.info resp
+    if resp.present?
+      redirect_to payments_path, notice: "Money sent via Dwolla: #{response}"
+    else
+      redirect_to payments_path, :flash => [:error => "Request not able to be processed"]# Flash error
     end
+    # if dwolla_user.send_money == success?
+    # redirect_to payments_path and flash "success"
+    # else
+    # redirect_to payments_path and flash "error"
   end
 
-  # GET /payments/new
-  # GET /payments/new.json
-  def new
-    @payment = Payment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @payment }
+  def request_money
+    resp = dwolla_user.request_money(params)
+    if resp.present?
+      redirect_to payments_path
+    else
+      redirect_to payments_path
     end
+
   end
 
-  # GET /payments/1/edit
-  def edit
-    @payment = Payment.find(params[:id])
+  private
+
+  def dwolla_user?
+    current_user.dwolla_user.present?
   end
 
-  # POST /payments
-  # POST /payments.json
-  def create
-    @payment = Payment.new(params[:payment])
-
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render json: @payment, status: :created, location: @payment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
-    end
+  def dwolla_user
+    current_user.dwolla_user
   end
 
-  # PUT /payments/1
-  # PUT /payments/1.json
-  def update
-    @payment = Payment.find(params[:id])
 
-    respond_to do |format|
-      if @payment.update_attributes(params[:payment])
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /payments/1
-  # DELETE /payments/1.json
-  def destroy
-    @payment = Payment.find(params[:id])
-    @payment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to payments_url }
-      format.json { head :no_content }
-    end
-  end
 end
