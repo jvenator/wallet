@@ -1,0 +1,6 @@
+<%= form_tag "/payments/request_money", :method => :post do %>
+    Amount: <%= text_field_tag "amount" %> <br />
+    Pin: <%= password_field_tag "pin" %> <br />
+    Dwolla User:(XXX-XXX-XXX) <%= text_field_tag "destination" %> <br />
+    <%= submit_tag "Request Money" %>
+<% end %>

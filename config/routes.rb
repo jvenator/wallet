@@ -6,6 +6,10 @@ Wallet::Application.routes.draw do
 
   match "account" => "account#show"
 
+  get "payments" => "payments#index"
+  post "payments/send_money" => "payments#send_money"
+  post "payments/request_money" => "payments#request_money"
+
   resource :dashboard
 
   resources :packages do

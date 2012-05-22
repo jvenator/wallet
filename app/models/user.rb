@@ -91,12 +91,10 @@ class User < ActiveRecord::Base
   # data: info[email, name, uid], quota_info[normal, quota, shared], referral_link, extra[access_token[token, secret]]]
   # info:
   def add_dropbox(data)
-    logger.info data.info.to_s
-    logger.info data.extra.to_s
      db_user = DropboxUser.find_by_uid(data.uid.to_s)
 
     if db_user.nil?
-      db_user = DropboxUser.create!(:uid => data.uid.to_s, :access_key => 'access', :access_secret => 'secret')
+      db_user = DropboxUser.create!(:uid => data.uid.to_s, :access_key => data.credentials.token, :access_secret => data.credentials.secret)
     end
 
     self.update_attribute(:dropbox_user, db_user)

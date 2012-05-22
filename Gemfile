@@ -24,6 +24,7 @@ gem 'heroku'
 gem 'foreman'
 gem 'newrelic_rpm'
 gem 'airbrake'
+gem 'sidekiq'
 
 gem 'devise'
 gem 'cancan'

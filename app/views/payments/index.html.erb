@@ -1,0 +1,16 @@
+<h1>Manage Payments</h1>
+<% if current_user.dwolla_user.nil? %>
+
+    <%= render 'dwolla_hero_signup' %>
+<% else %>
+<div class="dwolla_payment_methods">
+  <h3> Dwolla payment methods </h3>
+  <p> Send Money: </p>
+  <%=  render 'send_money_form' %>
+  <p> Request Money: </p>
+  <%=  render 'request_money_form' %>
+</div>
+
+<h3>  Transactions </h3>
+    <p> #TODO show all dwolla transactions here. </p>
+<% end %>
