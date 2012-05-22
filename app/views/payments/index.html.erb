@@ -1,0 +1,27 @@
+<h1>Listing payments</h1>
+<% if current_user.dwolla_user.nil? %>
+    <p> Sign up for Dwolla for the cheapest ACH
+      Payments <%= link_to activation_text(:dwolla_user), activation_url(:dwolla_user) %></p>
+
+
+<div class="dwolla_payemnts">
+  <h3> Dwolla payment abilities </h3>
+  <% link_to 'Send Money',     %>
+</div>
+<% end %>
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </table>
+
+    <br/>

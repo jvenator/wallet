@@ -1,5 +1,7 @@
 Wallet::Application.routes.draw do
 
+  resources :payments
+
   root :to => 'pages#home'
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
