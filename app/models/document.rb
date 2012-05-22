@@ -8,10 +8,31 @@ class Document < ActiveRecord::Base
   validates :name, :length => { :minimum => 3 }
   validates :name, :file, :presence => true
   
-  CATEGORIES = { blank: "Select", bank_statements: "Bank Statements", employment: "Employment", taxes: "Taxes", references: "References", miscellaneous: "Miscellaneous" }
+  CATEGORIES = [[0, "(Select)"], 
+                [1, "Bank Statements"], 
+                [2, "Employment"], 
+                [3, "Taxes"], 
+                [4, "References"], 
+                [5, "Miscellaneous"]]
   
   def self.categories
     CATEGORIES  # this is the same as return CATEGORIES
+  end
+
+  def category_name
+    CATEGORIES.each do |category|
+      if category[0] == self.category.to_i
+        return category[1]
+      end
+    end
+  end
+
+  def self.categories_hash
+    hash = {}
+    CATEGORIES.each do |category|
+      hash[category.last] = category.first
+    end
+    return hash
   end
   
 end

@@ -15,6 +15,7 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
@@ -22,13 +23,22 @@
 			    <% @documents.each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td>
+			        	<%= best_in_place document, :category, :type => :select, 
+			        				:collection => Document.categories %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>
@@ -51,7 +61,7 @@
 			          <%= link_to document.name, document_path(document) %> 
 			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td><%= document.category %></td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
 			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
@@ -77,7 +87,7 @@
 			          <%= link_to document.name, document_path(document) %> 
 			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td><%= document.category %></td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
 			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
@@ -103,7 +113,7 @@
 			          <%= link_to document.name, document_path(document) %> 
 			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td><%= document.category %></td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
 			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
@@ -129,7 +139,7 @@
 			          <%= link_to document.name, document_path(document) %> 
 			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td><%= document.category %></td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
 			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
@@ -155,7 +165,7 @@
 			          <%= link_to document.name, document_path(document) %> 
 			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
 			        </td>
-			        <td><%= category_name(document.category) %></td>
+			        <td><%= document.category %></td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
 			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>

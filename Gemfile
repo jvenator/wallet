@@ -33,6 +33,7 @@ gem 'fog', '0.9.0'
 
 
 gem 'simple_form'
+gem 'best_in_place'
 gem 'wicked'
 gem 'country_select'
 
