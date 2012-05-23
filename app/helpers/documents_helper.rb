@@ -8,5 +8,12 @@ module DocumentsHelper
 	# 	[[0, '(Select)'],[1, 'Banking'], [2,'Taxes'], [3,'Employment'], [4,'References'], [5,'Miscellaneous']]
 	# end
 
+	def category_selection(categories)
+		array = [ [0,"Select"] ]
+		categories.each { |c| array << [ c.id, c.name ] }
+		return array
+	end
+
+
 
 end

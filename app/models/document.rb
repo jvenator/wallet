@@ -1,32 +1,37 @@
 class Document < ActiveRecord::Base
-  attr_accessible :name, :file, :category, :as_of_date # other fields will need to be added in the future
+  attr_accessible :name, :file, :document_category_id, :as_of_date # other fields will need to be added in the future
   belongs_to :user
   has_many :document_packages
   has_many :packages, :through => :document_packages
   has_many :listings, :through => :document_listings
+  has_one :document_category
   mount_uploader :file, FileUploader
   validates :name, :length => {:minimum => 3}
   validates :name, :file, :presence => true
   after_create :upload_to_dropbox_async
 
-  CATEGORIES = [[0, "(Select)"],
-                [1, "Bank Statements"],
-                [2, "Employment"],
-                [3, "Taxes"],
-                [4, "References"],
-                [5, "Miscellaneous"]]
+  # CATEGORIES = [[0, "(Select)"],
+  #               [1, "Bank Statements"],
+  #               [2, "Employment"],
+  #               [3, "Taxes"],
+  #               [4, "References"],
+  #               [5, "Miscellaneous"]]
 
-  def self.categories
-    CATEGORIES # this is the same as return CATEGORIES
-  end
+  # def self.categories
+  #   CATEGORIES # this is the same as return CATEGORIES
+  # end
 
-  def self.categories_hash
-    hash = {}
-    CATEGORIES.each do |category|
-      hash[category.last] = category.first
-    end
-    return hash
-  end
+  # def self.categories_hash
+  #   hash = {}
+  #   CATEGORIES.each do |category|
+  #     hash[category.last] = category.first
+  #   end
+  #   return hash
+  # end
+
+  # def renter_document_categories
+  #   DocumentCategory.where(:user_type => "renter")
+  # end
 
   def upload_to_dropbox_async
     DropboxUploadWorker.perform_async(self.id)
