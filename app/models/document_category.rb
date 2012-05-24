@@ -1,6 +1,7 @@
 class DocumentCategory < ActiveRecord::Base
 	attr_accessible :user_type, :name, :description
-  # attr_accessible :title, :body
+  
+  
 
   def self.renter
   	where(user_type: "renter")

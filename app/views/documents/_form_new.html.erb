@@ -3,7 +3,7 @@
     <legend><%= controller.action_name.capitalize %> Document</legend>
       <%= f.input :name, :required => true, :class => 'control-group' %>
       <%= f.file_field :file, :class => 'file' %>
-      <%= f.input :document_category_id, :collection => category_selection(DocumentCategory.renter) %>
+      <%= f.input :document_category_id, :collection => DocumentCategory.renter %>
       <%= f.input :as_of_date, :as => :date, :label => "As of Date", :discard_day => true %>
 
     <div class="actions">

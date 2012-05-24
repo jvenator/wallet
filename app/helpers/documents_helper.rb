@@ -9,7 +9,7 @@ module DocumentsHelper
 	# end
 
 	def category_selection(categories)
-		array = [ [0,"Select"] ]
+		array = [ [0,"(Select by Clicking)"] ]
 		categories.each { |c| array << [ c.id, c.name ] }
 		return array
 	end

@@ -51,6 +51,7 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
@@ -58,13 +59,22 @@
 			    <% @documents.where(:document_category_id => DocumentCategory.find_by_name("Banking")).each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td><%= document.document_category.name %></td>
+			        <td>
+			        	<%= best_in_place document, :document_category_id, :type => :select, 
+			        				:collection => category_selection(DocumentCategory.renter) %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>
@@ -77,20 +87,30 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <% @documents.where(:document_category_id => 1).each do |document| %>
+			    <% @documents.where(:document_category_id => DocumentCategory.find_by_name("Taxes")).each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td></td>
+			        <td>
+			        	<%= best_in_place document, :document_category_id, :type => :select, 
+			        				:collection => category_selection(DocumentCategory.renter) %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>
@@ -103,20 +123,30 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <% @documents.where(:document_category_id => 1).each do |document| %>
+			    <% @documents.where(:document_category_id => DocumentCategory.find_by_name("Employment")).each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td></td>
+			        <td>
+			        	<%= best_in_place document, :document_category_id, :type => :select, 
+			        				:collection => category_selection(DocumentCategory.renter) %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>
@@ -129,20 +159,30 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <% @documents.where(:document_category_id => 1).each do |document| %>
+			    <% @documents.where(:document_category_id => DocumentCategory.find_by_name("References")).each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td></td>
+			        <td>
+			        	<%= best_in_place document, :document_category_id, :type => :select, 
+			        				:collection => category_selection(DocumentCategory.renter) %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>
@@ -155,20 +195,30 @@
 			    <tr>
 			      <th>Name</th>
 			      <th>Category</th>
+			      <th>As of Date</th>
 			      <th>Actions</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <% @documents.where(:document_category_id => 1).each do |document| %>
+			    <% @documents.where(:document_category_id => DocumentCategory.find_by_name("Miscellaneous")).each do |document| %>
 			      <tr>
 			        <td>
-			          <%= link_to document.name, document_path(document) %> 
-			          <%= link_to 'download', document.file.url, :target => "_blank", :class => "btn btn-mini" %>
+			          <h4>
+			          	<%= best_in_place document, :name %> 
+			          	<span class="form-prompt"><- click to rename</span>
+			          </h4>
 			        </td>
-			        <td></td>
+			        <td>
+			        	<%= best_in_place document, :document_category_id, :type => :select, 
+			        				:collection => category_selection(DocumentCategory.renter) %>
+			        </td>
+			        <td>
+			        	<%= document.as_of_date %>
+			        </td>
 			        <td>
 			          <%= link_to 'Edit', edit_document_path(document), :class => 'btn btn-mini' %>
-			          <%= link_to 'Destroy', document_path(document), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+			          <%= link_to 'Destroy', document_path(document), :method => :delete, 
+			          			:confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 			        </td>
 			      </tr>
 			    <% end %>

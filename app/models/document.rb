@@ -4,7 +4,7 @@ class Document < ActiveRecord::Base
   has_many :document_packages
   has_many :packages, :through => :document_packages
   has_many :listings, :through => :document_listings
-  has_one :document_category
+  belongs_to :document_category
   mount_uploader :file, FileUploader
   validates :name, :length => {:minimum => 3}
   validates :name, :file, :presence => true
