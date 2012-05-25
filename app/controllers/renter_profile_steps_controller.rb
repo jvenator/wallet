@@ -1,5 +1,6 @@
 class RenterProfileStepsController < ApplicationController
   before_filter :authenticate_user!
+  layout "renter_profile"
   include Wicked::Wizard
   steps :address, :personal
 
