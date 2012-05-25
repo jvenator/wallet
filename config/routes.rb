@@ -39,9 +39,10 @@ Wallet::Application.routes.draw do
     root :to => "base#index"
     resources :users
   end
-  
+
+  resources :renter_profiles  
   resources :renter_profile_steps
-  resources :renter_profiles
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

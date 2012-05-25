@@ -1,6 +1,5 @@
 class RenterProfilesController < ApplicationController
   before_filter :authenticate_user!
-  layout :renter_profile
 
   def index
     redirect_to root_path
