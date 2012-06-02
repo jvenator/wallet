@@ -1,11 +1,11 @@
 <div class="accordion" id="renter-profile-nav">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a href="#contactInfo" class="accordion-toggle data-toggle="collapse" data-target="contactInfo">Contact Info</a>
+      <a href="#contactInfo" data-toggle="collapse" data-target="#contactInfo"  data-parent="#renter-profile-nav">Contact Info</a>
     </div>
-    <div id="contactInfo" class="accordion-body collapse in" data-parent="#renter-profile-nav">
-      <div class="accordion-inner"
-      <ul>
+    <div id="contactInfo" class="accordion-body collapse">
+      <div class="accordion-inner">
+      <ul class="nav-list">
         <li> first link</li>
         <li> second link </li>
       </ul>
@@ -14,12 +14,15 @@
   </div>
   <div class="accordion-group">
     <div class="accordion-heading">
-      Employment
+      <a href="#employment" data-toggle="collapse" data-target="#employment" data-parent="#renter-profile-nav">Employment</a>
     </div>
     <div id="employment"class="accordion-body collapse">
-      <li> first employment link</li>
-      <li> second employment link </li>
-      </ul>
+      <div class="accordion-inner">
+        <ul class="nav-list">
+          <li> first employment link</li>
+          <li> second employment link </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

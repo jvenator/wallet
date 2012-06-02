@@ -2,7 +2,8 @@ class RenterProfileStepsController < ApplicationController
   before_filter :authenticate_user!
   layout "renter_profile"
   include Wicked::Wizard
-  steps :address, :personal
+  steps :phones, :address_current, :income, :employment_1, :employment_2, :employment_3,
+        :employment_explanation, :reference_1, :reference_2, :reference_3
 
   def show
     @renter_profile = current_user.renter_profile ||= RenterProfile.new

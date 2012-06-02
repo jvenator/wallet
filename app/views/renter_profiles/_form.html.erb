@@ -4,11 +4,11 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.input :first_name, :required => true, :autofocus => true %>
     <%= f.input :last_name, :required => true %>
-    <%= f.input :mobile_num, :label => "Mobile number" %>
-    <%= f.input :home_num, :label => "Home number" %>
-    <%= f.input :work_num, :label => "Work number" %>
+    <%= f.input :date_of_birth, :as => :date, :start_year => Date.today.year - 100,
+                :end_year => Date.today.year, :order => [:month, :day, :year],
+                :label => "Date of Birth (only MM/YY will be revealed to brokers & managers)" %>
   </div>
   <div class="actions">
-    <%= f.button :submit, "Continue -->" %>
+    <%= f.button :submit, "Continue" %>
   </div>
 <% end %>

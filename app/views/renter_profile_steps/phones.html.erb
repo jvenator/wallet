@@ -1,0 +1,11 @@
+<h3>Please give us with phones numbers where you can be reached</h3>
+<%= simple_form_for @renter_profile, url: wizard_path, :method => :put do |f| %>
+  <div class="inputs">
+    <%= f.input :mobile_num, :label => "Mobile number" %>
+    <%= f.input :home_num, :label => "Home number" %>
+    <%= f.input :work_num, :label => "Work number" %>
+  </div>
+  <div class="actions">
+    <%= button_to "Previous", edit_renter_profile_path %><%= f.button :submit, "Continue" %>
+  </div>
+<% end %>

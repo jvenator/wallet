@@ -1,0 +1,14 @@
+<h3>Please give us your "current" address</h3>
+<%= simple_form_for @renter_profile, url: wizard_path, :method => :put do |f| %>
+  <div class="inputs">
+    <%= f.input :address_1, :label => "Address 1" %>
+    <%= f.input :address_2, :label => "Address 2" %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip, :label => "Zip code" %>
+    <%= f.input :country %>
+  </div>
+  <div class="actions">
+    <%= button_to "Previous", previous_wizard_path %><%= f.button :submit, "Continue" %>
+  </div>
+<% end %>
